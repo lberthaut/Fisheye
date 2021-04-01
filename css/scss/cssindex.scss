@@ -45,6 +45,10 @@ nav{
     margin-left: 0.5em;
     cursor: pointer;
     font-size: 0.8em;
+    &:hover, &:focus{
+        background-color: $redcolor;
+        color: white;
+    }
 }
 
 h1{
@@ -119,4 +123,62 @@ article{
 
 footer{
     height: 10em;
+}
+
+
+
+/*Query Smartphone*/
+@media screen and (max-width: 720px) {
+
+    body{
+        width: 100%;
+    }
+
+    header{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+    }
+
+    banner{
+        height: 60px;
+        width: 300px;
+    }
+
+    .logo{
+        width: 13em;
+    }
+
+    h1{
+        font-size: 1.2em;
+        width: 40%;
+        height: 40px;
+        margin-top: 1em;
+        margin-left: 60%;
+    }
+
+    main{
+        width: 100%;
+        position: relative;
+    }
+
+    .categories{
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 2em;
+        width: 100%;
+        justify-content: center;
+    }
+
+    section{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    article{
+        width: 100%;
+    }
 }
