@@ -44,7 +44,7 @@ nav{
     color: $redcolor;
     margin-left: 0.5em;
     cursor: pointer;
-    font-size: 0.8em;
+    font-size: 0.9em;
     &:hover, &:focus{
         background-color: $redcolor;
         color: white;
@@ -128,7 +128,7 @@ footer{
 
 
 /*Query Smartphone*/
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 840px) {
 
     body{
         width: 100%;
@@ -171,14 +171,21 @@ footer{
         justify-content: center;
     }
 
+    #btn_select{
+        margin-bottom: 0.7em;
+        font-size: 1em;
+    }
+
     section{
         width: 100%;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        padding-top: 8em;
     }
 
     article{
         width: 100%;
+        margin-top: 3em;
     }
 }
