@@ -36,7 +36,7 @@ nav {
 }
 
 /* line 39, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssindex.scss */
-#btn_select {
+.btn_select {
   border: 0.5px solid #C4C4C4;
   box-sizing: border-box;
   border-radius: 11px;
@@ -48,7 +48,7 @@ nav {
 }
 
 /* line 48, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssindex.scss */
-#btn_select:hover, #btn_select:focus {
+.btn_select:hover, .btn_select:focus {
   background-color: #901C1C;
   color: white;
 }
@@ -79,7 +79,7 @@ article {
 }
 
 /* line 76, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssindex.scss */
-#photo_graphers {
+.photo_graphers {
   height: 17em;
   width: 17em;
   border-radius: 50%;
@@ -183,7 +183,7 @@ footer {
     justify-content: center;
   }
   /* line 174, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssindex.scss */
-  #btn_select {
+  .btn_select {
     margin-bottom: 0.7em;
     font-size: 1em;
   }

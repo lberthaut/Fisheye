@@ -36,7 +36,7 @@ nav{
     flex-wrap: wrap;
 }
 
-#btn_select{
+.btn_select{
     border: 0.5px solid $bordercolor;
     box-sizing: border-box;
     border-radius: 11px;
@@ -73,7 +73,7 @@ article{
     margin-top: 6em;
 }
 
-#photo_graphers{
+.photo_graphers{
     height: 17em; 
     width: 17em; 
     border-radius: 50%;
@@ -86,17 +86,6 @@ article{
 
 .format_photos{
     width: 20.5em;
-}
-
-.format_photos2{
-    width: 38em;
-    margin-top: 450px;
-    margin-left: 60px;
-}
-
-.format_photos3{
-    width: 28em;
-    margin-left: 60px;
 }
 
 .photographers_name{
@@ -171,7 +160,7 @@ footer{
         justify-content: center;
     }
 
-    #btn_select{
+    .btn_select{
         margin-bottom: 0.7em;
         font-size: 1em;
     }
