@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>${photographers.name}</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/cssphotographers.css">
+  <script src="js-json/scriptphotographers.js"></script> 
+</head>
+<body>
+    <header alt="head of page" class="head">
+        <banner>
+            <a href="index.html">
+                <img src="photos/logo.png" alt="Fisheye Home page" class="logo">
+            </a>
+        </banner>
+    </header>
+        <main alt="photographers page">
+            <header alt="photographers informations" class="infos">
+                    <h1 alt="photographers name">
+                        ${photographers.name}
+                    </h1>
+                    <p alt="photographer city" class="city">
+                        ${photographers.city}
+                    </p>
+                    <p alt="slogan" class="slogan">
+                        ${photographers.tagline}
+                    </p>
+                    <nav aria-label="categories" id="tagsbox">
+                    </nav>
+                    <input type="button" value="Contactez-moi" alt="contact me" class="btn_contact">
+            </header>
+            <div class="photo_graphers">
+                <img src="photos/sample/id_photos/TracyGalindo.jpg" alt="photographers_photo" class="format_photos">
+            </div>
+        </main>
+</body>
+</html>
