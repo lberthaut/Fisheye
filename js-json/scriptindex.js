@@ -5,8 +5,7 @@ fetch('FishEyeDataFR.json')
 		result.json())
 	.then(data => {
 		var photographersElement = document.getElementById('photographers');
-
-			for(const photographers of data.photographers){
+		for(const photographers of data.photographers){
 			photographersElement.innerHTML += `<article alt="photographers profile">
 						<a href="" alt="photographers page">
 							<div class="photo_graphers">
@@ -25,16 +24,14 @@ fetch('FishEyeDataFR.json')
 						<p alt="prices" class="prices">
 							${photographers.price}€/jour
 						</p>
-						<nav aria-label="categories">
+						<nav aria-label="categories" id="tagsbox">
 						</nav>
 					</article>`;
-			}
+		function includeTags (){
+			var photographersTagsBox = document.getElementById('tagsbox');
+			for(let i=0; i<photographers.tags.length; i++)
+			photographersTagsBox.innerHTML += `<input type="button" value="#${photographers.tags[i]}" alt="${photographers.tags[i]}" class="btn_select"></input>`
+		}
+		photographers.tags.forEach(includeTags);
+		}
 	})
-
-
-	/*
-data.photographers.tags.forEach(element =>{
-	const nav = document.querySelectorAll("nav")
-	nav.innerHTML += `<input type="button" value="#${photographers.tags}" alt="${photographers.tags}" class="btn_select"></input>`
-	};
-	*/
