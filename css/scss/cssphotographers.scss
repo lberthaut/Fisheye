@@ -93,3 +93,27 @@ h1{
 .format_photos{
     width: 15em;
 }
+
+.select-wrapper select{
+    border:0; 
+    min-width:130%; 
+    cursor:pointer; 
+    color:#000; 
+    color:rgba(0,0,0,0); 
+    text-shadow:0 0 0 #000; 
+    outline:none;
+    white-space:nowrap;
+}
+
+.select-wrapper:after{
+    content:"\25BC"; 
+    display:block; 
+    position:relative; 
+    float:right; 
+    top:-25px; 
+    right:-5px; 
+    background-color:#fff; 
+    width:32px; 
+    text-align:center; 
+    margin-bottom:-25px;
+}

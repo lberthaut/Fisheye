@@ -30,9 +30,19 @@
                     </nav>
                     <input type="button" value="Contactez-moi" alt="contact me" class="btn_contact">
             </header>
-            <div class="photo_graphers">
-                <img src="photos/sample/id_photos/TracyGalindo.jpg" alt="photographers_photo" class="format_photos">
+            <div class="photo_graphers" alt="photographer profile pic">
+                <img src="photos/sample/id_photos/${photographers.portrait}" alt="photographers_photo" class="format_photos">
             </div>
         </main>
+        <section alt="photos gallery">
+            <label for="selection">Trier par</label>
+            <div class="select-wrapper">
+                <select name="sort by" id="selection">
+                  <option value="Popularite">Popularité</option>
+                  <option value="Date">Date</option>
+                  <option value="Titre">Titre</option>
+                </select>
+              </div>
+        </section>
 </body>
 </html>
