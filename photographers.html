@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/cssphotographers.css">
   <script src="js-json/scriptphotographers.js"></script> 
+  <script src="https://kit.fontawesome.com/959f234b81.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header alt="head of page" class="head">
@@ -35,14 +36,18 @@
             </div>
         </main>
         <section alt="photos gallery">
-            <label for="selection">Trier par</label>
-            <div class="select-wrapper">
-                <select name="sort by" id="selection">
-                  <option value="Popularite">Popularité</option>
-                  <option value="Date">Date</option>
-                  <option value="Titre">Titre</option>
-                </select>
-              </div>
+            <nav aria-label="sort by" id="sortby">
+                <label for="selection">Trier par</label>
+                <div class="select-style">
+                    <select name="sort by" id="selection">
+                        <option value="Popularite">Popularité</option>
+                        <option value="Date">Date</option>
+                        <option value="Titre">Titre</option>
+                    </select>
+                </div>
+            </nav>
+            <section alt="photos section" id="photos_sections">
+            </section>
         </section>
 </body>
 </html>

@@ -94,26 +94,100 @@ h1{
     width: 15em;
 }
 
-.select-wrapper select{
-    border:0; 
-    min-width:130%; 
-    cursor:pointer; 
-    color:#000; 
-    color:rgba(0,0,0,0); 
-    text-shadow:0 0 0 #000; 
-    outline:none;
-    white-space:nowrap;
+#sortby{
+    display: flex;
+    flex-direction: row;
 }
 
-.select-wrapper:after{
-    content:"\25BC"; 
-    display:block; 
-    position:relative; 
-    float:right; 
-    top:-25px; 
-    right:-5px; 
-    background-color:#fff; 
-    width:32px; 
-    text-align:center; 
-    margin-bottom:-25px;
+.select-style {
+    padding: 0;
+    margin: 0;
+    width: 100px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: $redcolor;
+    appearance: none;
+    color: white;
+    margin-left: 1em;
+    border-radius: 5px;
+}
+
+.select-style:after {
+    top: 50%;
+    left: 85%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-top-color: white;
+    border-width: 5px;
+    margin-top: -2px;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+#photos_section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.photos_box{
+    width: 300px;
+    margin-top: 60px;
+}
+
+.photos_box img{
+    width: 300px;
+    bottom: 20px;
+    position: relative;
+}
+
+.img_format{
+    border-radius: 5px;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.photos_infos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: white;
+    width: 300px;
+    color: $redcolor;
+    padding-top: 10px;
+}
+
+.photos_infos p{
+    margin :0;
+    font-size: 22px;
+}
+
+.photos_infos p:nth-child(1){
+    margin-right: 90px;
+}
+
+.photos_infos p:nth-child(2){
+    margin-right: 25px;
+}
+
+.fa-heart{
+    position: relative;
+    top: 0.2em;
+    font-size: 20px;
+    margin-left: 5px;
 }
