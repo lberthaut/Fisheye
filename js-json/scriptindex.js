@@ -6,8 +6,12 @@ fetch('FishEyeDataFR.json')
 	.then(data => {
 		var photographersElement = document.getElementById('photographers');
 		for(const photographers of data.photographers){
+			var tagsBox = "";
+			for(const photographersTags of photographers.tags){
+				tagsBox += `<input type="button" value="#${photographersTags}" alt="${photographersTags}" class="btn_select"></input>`
+			}
 			photographersElement.innerHTML += `<article alt="photographers profile">
-						<a href="" alt="photographers page">
+						<a href="photographer.html?id=${photographers.id}" alt="photographers page">
 							<div class="photo_graphers">
 								<img src="photos/sample/id_photos/${photographers.portrait}" alt="photographers_photo" class="format_photos">
 							</div>
@@ -25,19 +29,9 @@ fetch('FishEyeDataFR.json')
 							${photographers.price}€/jour
 						</p>
 						<nav aria-label="categories" id="tagsbox">
+						${tagsBox}
 						</nav>
 					</article>`;
-					var photographersTagsBox = document.getElementById('tagsbox');
-					for(const photographersTags of photographers.tags){
-						let i=0; i<photographersTags.length; i++;
-						photographersTagsBox.innerHTML += `<input type="button" value="#${photographers.tags[i]}" alt="${photographers.tags[i]}" class="btn_select"></input>`
-					}
-		/* function includeTags (){
-			var photographersTagsBox = document.getElementById('tagsbox');
-			for(let i=0; i<photographers.tags.length; i++)
-			photographersTagsBox.innerHTML += `<input type="button" value="#${photographers.tags[i]}" alt="${photographers.tags[i]}" class="btn_select"></input>`
-		}
-		photographers.tags.forEach(includeTags); */
 		}
 	})
 
