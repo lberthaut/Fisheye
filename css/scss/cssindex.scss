@@ -45,6 +45,7 @@ nav{
     margin-left: 0.5em;
     cursor: pointer;
     font-size: 0.9em;
+    text-transform: capitalize;
     &:hover, &:focus{
         background-color: $redcolor;
         color: white;

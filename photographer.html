@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>${photographers.name}</title>
+  <title>Page Photographe</title>
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/cssphotographers.css">
   <script src="js-json/scriptphotographers.js"></script> 
@@ -16,38 +16,23 @@
             </a>
         </banner>
     </header>
-        <main alt="photographers page">
-            <header alt="photographers informations" class="infos">
-                    <h1 alt="photographers name">
-                        ${photographers.name}
-                    </h1>
-                    <p alt="photographer city" class="city">
-                        ${photographers.city}
-                    </p>
-                    <p alt="slogan" class="slogan">
-                        ${photographers.tagline}
-                    </p>
-                    <nav aria-label="categories" id="tagsbox">
-                    </nav>
-                    <input type="button" value="Contactez-moi" alt="contact me" class="btn_contact">
-            </header>
-            <div class="photo_graphers" alt="photographer profile pic">
-                <img src="photos/sample/id_photos/${photographers.portrait}" alt="photographers_photo" class="format_photos">
-            </div>
-        </main>
-        <section alt="photos gallery">
-            <nav aria-label="sort by" id="sortby">
-                <label for="selection">Trier par</label>
-                <div class="select-style">
-                    <select name="sort by" id="selection">
-                        <option value="Popularite">Popularité</option>
-                        <option value="Date">Date</option>
-                        <option value="Titre">Titre</option>
-                    </select>
-                </div>
-            </nav>
-            <section alt="photos section" id="photos_sections">
-            </section>
+    <div id="modal_zone">
+    </div>
+    <main alt="photographers page" id="profile">
+    </main>
+    <section alt="photos gallery">
+        <nav aria-label="sort by" id="sortby">
+        <label for="selection">Trier par</label>
+        <div class="select-style">
+            <select name="sort by" id="selection">
+                <option value="Popularite">Popularité</option>
+                <option value="Date">Date</option>
+                <option value="Titre">Titre</option>
+            </select>
+        </div>
+        </nav>
+        <section alt="photos section" id="photos_sections">
         </section>
+    </section>
 </body>
 </html>

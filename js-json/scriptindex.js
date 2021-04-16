@@ -10,7 +10,7 @@ fetch('FishEyeDataFR.json')
 			for(const photographersTags of photographers.tags){
 				tagsBox += `<input type="button" value="#${photographersTags}" alt="${photographersTags}" class="btn_select"></input>`
 			}
-			photographersElement.innerHTML += `<article alt="photographers profile">
+			photographersElement.innerHTML += `<article alt="photographers profile" id="card">
 						<a href="photographer.html?id=${photographers.id}" alt="photographers page">
 							<div class="photo_graphers">
 								<img src="photos/sample/id_photos/${photographers.portrait}" alt="photographers_photo" class="format_photos">
@@ -34,5 +34,24 @@ fetch('FishEyeDataFR.json')
 					</article>`;
 		}
 	})
+/*
+	const tagButton = document.querySelectorAll('input');
+	const card = document.getElementById('card');
 
-
+	tagButton.addEventListener("click", () => {
+		if(getComputedStyle(card).display != "none"){
+		  card.style.display = "none";
+		} else {
+		  card.style.display = "block";
+		}
+	  })
+	  
+	  function hideSeek(){
+		if(getComputedStyle(card).display != "none"){
+		  card.style.display = "none";
+		} else {
+		  card.style.display = "block";
+		}
+	  };
+	  tagButton.onclick = hideSeek;
+	*/
