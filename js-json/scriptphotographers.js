@@ -44,13 +44,14 @@ fetch('FishEyeDataFR.json')
             }
 
         const contactButton = document.querySelector('.btn_contact');
-        const bodyPage = document.querySelector('#modal_zone');
-
+        const modalZone = document.querySelector('#modal_zone');
+        const contactModal = document.querySelector('.modal');
+        const blockOpacity = document.querySelector('#bloc_page');
 
         contactButton.addEventListener('click', openModal);
 
         function openModal(){
-            bodyPage.innerHTML = `<div alt="modal" class="modal">
+            modalZone.innerHTML = `<div alt="modal" class="modal">
             <p>Contactez moi</p>
             <i class="fa fa-times" id="close"></i>
             <p>${photographer.name}</p>
@@ -98,15 +99,15 @@ fetch('FishEyeDataFR.json')
               />
             </form>
         </div>`
+
+        blockOpacity.style.opacity = "0.5";
         }
 
-        /* const exitModal = document.querySelector('#close');
+        document.querySelector('.close').addEventListener('click', closeModal())
 
-        exitModal.addEventListener('click', closeModal);
-
-        const contactModal = document.querySelector('.modal');
         function closeModal(){
+
             contactModal.style.visibility = 'hidden';
-        } */
+        }
 
         })
