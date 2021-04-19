@@ -163,6 +163,33 @@ h1 {
 }
 
 /* line 150, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+.tagsbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 350px;
+}
+
+/* line 157, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+.btn_tags {
+  border: 0.5px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 11px;
+  background-color: white;
+  color: #901C1C;
+  margin-left: 0.5em;
+  cursor: pointer;
+  font-size: 0.9em;
+  text-transform: capitalize;
+}
+
+/* line 167, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+.btn_tags:hover, .btn_tags:focus {
+  background-color: #901C1C;
+  color: white;
+}
+
+/* line 174, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .photo_graphers {
   height: 15em;
   width: 15em;
@@ -174,18 +201,18 @@ h1 {
   margin: 0 auto;
 }
 
-/* line 161, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 185, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .format_photos {
-  width: 15em;
+  width: 23em;
 }
 
-/* line 165, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 189, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 #sortby {
   display: flex;
   flex-direction: row;
 }
 
-/* line 170, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 194, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .select-style {
   padding: 0;
   margin: 0;
@@ -195,7 +222,7 @@ h1 {
   position: relative;
 }
 
-/* line 179, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 203, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .select-style select {
   padding: 5px 8px;
   width: 100%;
@@ -208,7 +235,7 @@ h1 {
   border-radius: 5px;
 }
 
-/* line 191, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 215, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .select-style:after {
   top: 50%;
   left: 85%;
@@ -223,12 +250,12 @@ h1 {
   margin-top: -2px;
 }
 
-/* line 205, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 229, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .select-style select:focus {
   outline: none;
 }
 
-/* line 209, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 233, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 #photos_sections {
   width: 100%;
   display: flex;
@@ -237,21 +264,21 @@ h1 {
   justify-content: space-between;
 }
 
-/* line 217, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 241, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .photos_box {
   width: 350px;
   height: 340px;
   margin: 25px;
 }
 
-/* line 224, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 248, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .photos_box img {
   width: 350px;
   bottom: 20px;
   position: relative;
 }
 
-/* line 230, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 254, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .img_format {
   border-radius: 5px;
   width: 350px;
@@ -259,7 +286,7 @@ h1 {
   overflow: hidden;
 }
 
-/* line 237, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 261, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .photos_infos {
   display: flex;
   flex-direction: row;
@@ -270,23 +297,23 @@ h1 {
   padding-top: 10px;
 }
 
-/* line 247, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 271, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .photos_infos p {
   margin: 0;
   font-size: 22px;
 }
 
-/* line 252, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 276, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .photos_infos p:nth-child(1) {
   margin-right: 50px;
 }
 
-/* line 256, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 280, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .photos_infos p:nth-child(2) {
   margin-right: 25px;
 }
 
-/* line 260, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 284, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .fa-heart {
   position: relative;
   top: 0.2em;

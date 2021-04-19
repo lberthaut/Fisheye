@@ -8,7 +8,10 @@ fetch('FishEyeDataFR.json')
         var photographer = data.photographers.find(p => p.id == id);
 		var photosElement = document.querySelector('#photos_sections');
         var photoResult = data.media.filter(media => media.photographerId == id);
-        
+        var tags = "";
+			for(const photographers of photographer.tags){
+				tags += `<input type="button" value="#${photographers}" alt="${photographers}" class="btn_tags"></input>`
+			}
             var photographerCard = document.querySelector('main');
             photographerCard.innerHTML += `<section alt="photographers informations" class="infos">
             <h1 alt="photographers name">
@@ -20,6 +23,9 @@ fetch('FishEyeDataFR.json')
             <p alt="slogan" class="slogan">
                 ${photographer.tagline}
             </p>
+            <div class="tagsbox">
+            ${tags}
+            </div>
             <nav aria-label="categories" id="tagsbox">
             </nav>
             <input type="button" value="Contactez-moi" alt="contact me" class="btn_contact">

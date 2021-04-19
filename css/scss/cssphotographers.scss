@@ -147,6 +147,30 @@ h1{
     width: auto;
 }
 
+.tagsbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 350px;
+}
+
+.btn_tags{
+    border: 0.5px solid $bordercolor;
+    box-sizing: border-box;
+    border-radius: 11px;
+    background-color: white;
+    color: $redcolor;
+    margin-left: 0.5em;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-transform: capitalize;
+    &:hover, &:focus{
+        background-color: $redcolor;
+        color: white;
+    }
+}
+
+
 .photo_graphers{
     height: 15em; 
     width: 15em; 
@@ -159,7 +183,7 @@ h1{
 }
 
 .format_photos{
-    width: 15em;
+    width: 23em;
 }
 
 #sortby{

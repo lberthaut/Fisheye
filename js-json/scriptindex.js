@@ -34,24 +34,3 @@ fetch('FishEyeDataFR.json')
 					</article>`;
 		}
 	})
-/*
-	const tagButton = document.querySelectorAll('input');
-	const card = document.getElementById('card');
-
-	tagButton.addEventListener("click", () => {
-		if(getComputedStyle(card).display != "none"){
-		  card.style.display = "none";
-		} else {
-		  card.style.display = "block";
-		}
-	  })
-	  
-	  function hideSeek(){
-		if(getComputedStyle(card).display != "none"){
-		  card.style.display = "none";
-		} else {
-		  card.style.display = "block";
-		}
-	  };
-	  tagButton.onclick = hideSeek;
-	*/
