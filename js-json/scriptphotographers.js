@@ -103,11 +103,4 @@ fetch('FishEyeDataFR.json')
         blockOpacity.style.opacity = "0.5";
         }
 
-        document.querySelector('.close').addEventListener('click', closeModal())
-
-        function closeModal(){
-
-            contactModal.style.visibility = 'hidden';
-        }
-
         })
