@@ -256,7 +256,7 @@ h1 {
 }
 
 /* line 233, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-#photos_sections {
+#medias_sections {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -265,21 +265,21 @@ h1 {
 }
 
 /* line 241, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-.photos_box {
+.media_box {
   width: 350px;
   height: 340px;
   margin: 25px;
 }
 
 /* line 248, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-.photos_box img {
+.media_box img {
   width: 350px;
   bottom: 20px;
   position: relative;
 }
 
 /* line 254, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-.img_format {
+.media_format {
   border-radius: 5px;
   width: 350px;
   height: 300px;
@@ -287,7 +287,13 @@ h1 {
 }
 
 /* line 261, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-.photos_infos {
+video {
+  height: 300px;
+  overflow: hidden;
+}
+
+/* line 266, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+.medias_infos {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -297,23 +303,23 @@ h1 {
   padding-top: 10px;
 }
 
-/* line 271, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-.photos_infos p {
+/* line 276, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+.medias_infos p {
   margin: 0;
   font-size: 22px;
 }
 
-/* line 276, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-.photos_infos p:nth-child(1) {
+/* line 281, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+.medias_infos p:nth-child(1) {
   margin-right: 50px;
 }
 
-/* line 280, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
-.photos_infos p:nth-child(2) {
+/* line 285, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+.medias_infos p:nth-child(2) {
   margin-right: 25px;
 }
 
-/* line 284, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+/* line 289, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .fa-heart {
   position: relative;
   top: 0.2em;

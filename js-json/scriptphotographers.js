@@ -6,7 +6,6 @@ fetch('FishEyeDataFR.json')
 		result.json())
 	.then(data => {
         var photographer = data.photographers.find(p => p.id == id);
-		var photosElement = document.querySelector('#photos_sections');
         var photoResult = data.media.filter(media => media.photographerId == id);
         var tags = "";
 			for(const photographers of photographer.tags){
@@ -34,28 +33,15 @@ fetch('FishEyeDataFR.json')
                 <img src="photos/sample/id_photos/${photographer.portrait}" alt="photographers_photo" class="format_photos">
             </div>`
         
-		for(const photosData of photoResult){
-            const photographerName = photographer.name.split(' ');
-			photosElement.innerHTML += `<article alt="photos" class="photos_box">
-            <div class="img_format">
-                <img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="photo">
-            </div>
-            <aside alt="informations" class="photos_infos">
-                <p>${photosData.image}</p>
-                <p>${photosData.price}€</p>
-                <p>${photosData.likes}</p>
-                <i class="fas fa-heart"></i>
-            </aside>
-        </article>`;
-            }
+		showMedia(photographer, photoResult);
 
+            /*Overture de la Modal de contact*/
+            
         const contactButton = document.querySelector('.btn_contact');
         const modalZone = document.querySelector('#modal_zone');
-        const contactModal = document.querySelector('.modal');
         const blockOpacity = document.querySelector('#bloc_page');
 
         contactButton.addEventListener('click', openModal);
-
         function openModal(){
             modalZone.innerHTML = `<div alt="modal" class="modal">
             <p>Contactez moi</p>
@@ -109,4 +95,52 @@ fetch('FishEyeDataFR.json')
         blockOpacity.style.opacity = "0.5";
         }
 
+
+        
+        document.querySelector('#selection').addEventListener('change', function(){
+            switch(this.value){
+                case "date":
+                showMedia (photographer, photoResult.sort((a,b)=> Date.parse(b.date) - Date.parse(a.date)));
+                break;
+                case "popularite":
+                showMedia (photographer, photoResult.sort((a,b)=> b.likes - a.likes));
+                break;
+                case "titre":
+                showMedia (photographer,photoResult.sort((a, b)=> a.image.localeCompare(b.image)));
+                break;
+                default:
+                break;
+        
+            }
         })
+        })
+
+function showMedia(photographer, photoResult){
+    var photosElement = document.querySelector('#medias_sections');
+    photosElement.innerHTML = "";
+    for(const photosData of photoResult){
+        const photographerName = photographer.name.split(' ');
+        var media = "";
+        var title = "";
+        if(photosData.image != undefined){
+            media = `<img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="photo">`;
+            title = photosData.image;
+        }
+        if(photosData.video != undefined){
+            media = `<video controls><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4"></video>`;
+            title = photosData.video;
+        }
+        photosElement.innerHTML += `<article alt="photos" class="media_box">
+        <div class="media_format">
+            ${media}
+        </div>
+        <aside alt="informations" class="medias_infos">
+            <p>${title}</p>
+            <p>${photosData.price}€</p>
+            <p>${photosData.likes}</p>
+            <i class="fas fa-heart"></i>
+        </aside>
+    </article>`;
+        }
+}
+
