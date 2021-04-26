@@ -37,7 +37,7 @@ fetch('FishEyeDataFR.json')
         showTotalLikes(photoResult);
 
 
-        /*Overture et fermeture de la Modal de contact*/
+        /*Overture de la Modal de contact*/
         const contactButton = document.querySelector('.btn_contact');
         const modalZone = document.querySelector('#modal_zone');
         const blockOpacity = document.querySelector('#bloc_page');
@@ -95,10 +95,13 @@ fetch('FishEyeDataFR.json')
 
         blockOpacity.style.opacity = "0.5";
 
+
+        /*Fermeture de la Modal*/
         const closeButton = document.querySelector('#close');
         const modal = document.querySelector('.modal');
         closeButton.addEventListener('click', function close(){
             modal.style.display = "none";
+            blockOpacity.style.opacity = "1";
             });
         }
 
@@ -123,11 +126,17 @@ fetch('FishEyeDataFR.json')
             }
             showMedia (photographer, filterResult);
         })
+
+        /*addition des likes*/
+function showTotalLikes (photoResult){
+    var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
+    var price = photographer.price;
+    document.querySelector('.compteur').innerHTML= `<p>${likes}</p> <i class="fas fa-heart"></i>
+    <p>${price}/jour</p>`;
+};
     })
 
     
-
-
 /*Affichage des medias*/
 function showMedia(photographer, photoResult){
     var mediaElement = document.querySelector('#medias_sections');
@@ -149,7 +158,7 @@ function showMedia(photographer, photoResult){
             ${media}
         </div>
         <aside alt="informations" class="medias_infos">
-            <p>${title.replace('.jpg',"").replace('_'," ")}</p>
+            <p>${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
             <p>${photosData.price}€</p>
             <p>${photosData.likes}</p>
             <i class="fas fa-heart"></i>
@@ -157,10 +166,3 @@ function showMedia(photographer, photoResult){
     </article>`;
         }
 }
-
-/*addition des likes*/
-function showTotalLikes (photoResult){
-    var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
-    document.querySelector('.compteur').innerHTML= likes;
-};
-
