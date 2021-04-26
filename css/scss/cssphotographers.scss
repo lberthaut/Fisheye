@@ -45,7 +45,7 @@ body{
     font-size: 34px;
     position: absolute;
     cursor: pointer;
-    margin-left: 85%
+    margin-left: 85%;
 }
 
 .modal p:nth-child(2){
@@ -170,7 +170,6 @@ h1{
     }
 }
 
-
 .photo_graphers{
     height: 15em; 
     width: 15em; 
@@ -292,4 +291,15 @@ video{
     font-size: 20px;
     margin-left: 5px;
     cursor: pointer;
+}
+
+.compteur{
+    z-index: 2;
+    position: fixed;
+    background-color: $modalbackground;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px 5px 0px 0px;
+    bottom: 0;
+    right: 0;
 }
