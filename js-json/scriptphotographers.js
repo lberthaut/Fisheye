@@ -106,8 +106,6 @@ fetch('FishEyeDataFR.json')
         }
 
 
-
-        
         /*Tri des medias*/
         document.querySelector('#selection').addEventListener('change', function(){
             var filterResult = null;
@@ -127,13 +125,25 @@ fetch('FishEyeDataFR.json')
             showMedia (photographer, filterResult);
         })
 
+        
         /*addition des likes*/
-function showTotalLikes (photoResult){
-    var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
-    var price = photographer.price;
-    document.querySelector('.compteur').innerHTML= `<p>${likes}</p> <i class="fas fa-heart"></i>
-    <p>${price}/jour</p>`;
-};
+        function showTotalLikes (photoResult){
+            var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
+            var price = photographer.price;
+            document.querySelector('.compteur').innerHTML= `<div class="compteurlikes"><p>${likes}</p> <i class="fas fa-heart"></i></div>
+            <p>${price} / jour</p>`;
+        };
+
+
+        /*Rajoute 1 au click des likes*/
+        var liked = photoResult.likes;
+
+        function sum(liked){
+            liked++;
+            document.querySelector('.liked').textContent = liked;
+        }
+        document.querySelector('.fas').addEventListener('click', sum);
+
     })
 
     
@@ -158,10 +168,14 @@ function showMedia(photographer, photoResult){
             ${media}
         </div>
         <aside alt="informations" class="medias_infos">
-            <p>${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
+            <span class="titlebox">
+                <p>${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
+            </span>
             <p>${photosData.price}€</p>
-            <p>${photosData.likes}</p>
-            <i class="fas fa-heart"></i>
+            <span class="likesbox">
+                <p class="liked">${photosData.likes}</p>
+                <i class="fas fa-heart heartmedia"></i>
+            </span>
         </aside>
     </article>`;
         }
