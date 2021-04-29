@@ -148,17 +148,66 @@ fetch('FishEyeDataFR.json')
         /*affichage Lightbox*/
         class lightbox{
             static init(){
-                const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
-                    .forEach(link => link.addEventListener('click', e=>{
+                const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'))
+                const gallery = links.map(link =>link.getAttribute('href'))
+
+                    links.forEach(link => link.addEventListener('click', e=>{
                         e.preventDefault()
-                        new lightbox(e.currentTarget.getAttribute('href'))
+                        new lightbox(e.currentTarget.getAttribute('href'), gallery)
                     }))
             }
 
-            constructor (url){
+            constructor (url, images){
                 const element = this.buildDOM(url)
+                this.images = gallery
+                this.onKeyUp = this.onKeyUp.bind(this)
                 document.body.appendChild(element)
+                document.addEventListener('keyup', this.onKeyUp)
             }
+            
+            loadImage(url){
+                this.url = null
+                const image = new Image()
+                const container = this.element.querySelector('lightbox_container')
+            }
+
+            onKeyUp(e){
+                if(e.key =='Escape'){
+                    this.close
+                } else if(e.key == 'ArrowLeft'){
+                    this.prev(e)
+                } else if(e.key == 'ArrowRight'){
+                    this.next(e)
+                }
+            }
+
+            close(e){
+                e.preventDefault()
+                this.element.style.display = "none";
+                window.setTimeout(()=>{
+                    this.element.parentElement.removeChild(this.element)
+                }, 500)
+                document.removeEventListener('keyup', this.onKeyUp)
+            }
+
+            next(e){
+                e.preventDefault()
+                let i = this.images.findIndex(image => i == this.url)
+                if(i == this.image.length -1){
+                    i=-1
+                }
+                this.loadImage(this.images[i + 1])
+            }
+
+            prev(e){
+                e.preventDefault()
+                let i = this.images.findIndex(image => i == this.url)
+                if(i == 0){
+                    i = this.image.length
+                }
+                this.loadImage(this.images[i - 1])
+            }
+
 
             buildDOM (url){
                 const dom = document.createElement('div')
@@ -167,8 +216,12 @@ fetch('FishEyeDataFR.json')
                 <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
                 <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
                 <div class="lightbox_container">
-                    <img src="photos/sample/mimi/Animals_Rainbow.jpg">
+                ${gallery}
                 </div>`
+                dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this))
+                dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this))
+                dom.querySelector('lightbox_prev').addEventListener('click', this.prev.bind(this))
+                return dom;
             }
         }
 
