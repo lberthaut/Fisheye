@@ -37,7 +37,7 @@ fetch('FishEyeDataFR.json')
         showTotalLikes(photoResult);
 
 
-        /*Overture de la Modal de contact*/
+        /*Ouverture de la Modal de contact*/
         const contactButton = document.querySelector('.btn_contact');
         const modalZone = document.querySelector('#modal_zone');
         const allPage = document.querySelector('#bloc_page');
@@ -101,7 +101,7 @@ fetch('FishEyeDataFR.json')
         const modal = document.querySelector('.modal');
         closeButton.addEventListener('click', function close(){
             modal.style.display = "none";
-            blockOpacity.style.opacity = "1";
+            allPage.style.opacity = "1";
             });
         }
 
@@ -164,12 +164,6 @@ fetch('FishEyeDataFR.json')
                 document.body.appendChild(element)
                 document.addEventListener('keyup', this.onKeyUp)
             }
-            
-            loadImage(url){
-                this.url = null
-                const image = new Image()
-                const container = this.element.querySelector('lightbox_container')
-            }
 
             onKeyUp(e){
                 if(e.key =='Escape'){
@@ -208,7 +202,6 @@ fetch('FishEyeDataFR.json')
                 this.loadImage(this.images[i - 1])
             }
 
-
             buildDOM (url){
                 const dom = document.createElement('div')
                 dom.classList.add('lightbox')
@@ -216,7 +209,7 @@ fetch('FishEyeDataFR.json')
                 <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
                 <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
                 <div class="lightbox_container">
-                ${gallery}
+                ${url}
                 </div>`
                 dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this))
                 dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this))
@@ -239,11 +232,11 @@ function showMedia(photographer, photoResult){
         var media = "";
         var title = "";
         if(photosData.image != undefined){
-            media = `<a href="photos/sample/${photographerName[0]}/${photosData.image}" data-lightbox="mygallery"><img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="photo"></a>`;
+            media = `<a href="photos/sample/${photographerName[0]}/${photosData.image}" data-lightbox="mygallery"><img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="${photosData.alt}"></a>`;
             title = photosData.image;
         }
         if(photosData.video != undefined){
-            media = `<a href="photos/sample/${photographerName[0]}/${photosData.video}" data-lightbox="mygallery"><video controls><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4"></video></a>`;
+            media = `<a href="photos/sample/${photographerName[0]}/${photosData.video}" data-lightbox="mygallery"><video preload="metadata"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4" alt="${photosData.alt}></video></a>`;
             title = photosData.video;
         }
         mediaElement.innerHTML += `<article alt="photos" class="media_box">
