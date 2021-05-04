@@ -136,17 +136,17 @@ fetch('FishEyeDataFR.json')
 
 
         /*Rajoute 1 au click des likes*/
-        var liked = photoResult.likes;
+        /* var liked = photoResult.likes;
 
         function sum(){
             liked++;
             document.querySelector('.liked').textContent = liked;
         }
-        document.querySelector('.fas').addEventListener('click', sum);
+        document.querySelector('.fas').addEventListener('click', sum); */
 
 
         /*affichage Lightbox*/
-        class lightbox{
+        /* class lightbox{
             static init(){
                 const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'))
                 const gallery = links.map(link =>link.getAttribute('href'))
@@ -218,7 +218,7 @@ fetch('FishEyeDataFR.json')
             }
         }
 
-        lightbox.init()
+        lightbox.init() */
 
     })
 

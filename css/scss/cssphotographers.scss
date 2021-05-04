@@ -33,6 +33,7 @@ body{
     flex-direction: column;
     z-index: 2;
     margin-left: 30%;
+    top: 10vh;
 }
 
 .modal p{
@@ -243,9 +244,9 @@ h1{
 }
 
 .media_box img{
-    width: 490px;
-    bottom: 20px;
+    height: 200%;
     position: relative;
+    bottom: 50px;
 }
 
 .media_format{
