@@ -35,6 +35,7 @@ fetch('FishEyeDataFR.json')
         
 		showMedia(photographer, photoResult);
         showTotalLikes(photoResult);
+        showTotalprice(photographer);
 
 
         /*Ouverture de la Modal de contact*/
@@ -43,67 +44,6 @@ fetch('FishEyeDataFR.json')
         const allPage = document.querySelector('#bloc_page');
 
         contactButton.addEventListener('click', openModal);
-        function openModal(){
-            modalZone.innerHTML = `<div alt="modal" class="modal">
-            <p>Contactez moi</p>
-            <i class="fa fa-times" id="close"></i>
-            <p>${photographer.name}</p>
-            <form
-                  name="contact"
-                  action="#"
-                  method="get"
-                  onsubmit="return validate();"
-                >
-            <label for="lastname">Prénom</label>
-                <input
-                    class="text-control"
-                    type="text"
-                    id="firstname"
-                    name="last"
-                    required
-                />
-            <label for="firstname">Nom</label>
-                <input
-                    class="text-control"
-                    type="text"
-                    id="lastname"
-                    name="last"
-                    required
-                />
-            <label for="mail">E-mail</label>
-                <input
-                    class="text-control"
-                    type="email"
-                    id="mail"
-                    name="email"
-                    required
-                />
-            <label for="message">Message</label>
-                <textarea
-                    id="message"
-                    rows="5"
-                    required
-                >
-                </textarea>
-                <input
-                    type="submit"
-                    class="send_button"
-                    value="Envoyer"
-              />
-            </form>
-        </div>`
-
-        allPage.style.opacity = "0.5";
-
-
-        /*Fermeture de la Modal*/
-        const closeButton = document.querySelector('#close');
-        const modal = document.querySelector('.modal');
-        closeButton.addEventListener('click', function close(){
-            modal.style.display = "none";
-            allPage.style.opacity = "1";
-            });
-        }
 
 
         /*Tri des medias*/
@@ -125,101 +65,9 @@ fetch('FishEyeDataFR.json')
             showMedia (photographer, filterResult);
         })
 
-        
-        /*addition des likes*/
-        function showTotalLikes (photoResult){
-            var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
-            var price = photographer.price;
-            document.querySelector('.compteur').innerHTML= `<div class="compteurlikes"><p>${likes}</p> <i class="fas fa-heart"></i></div>
-            <p>${price}€ / jour</p>`;
-        };
-
-
-        /*Rajoute 1 au click des likes*/
-        /* var liked = photoResult.likes;
-
-        function sum(){
-            liked++;
-            document.querySelector('.liked').textContent = liked;
-        }
-        document.querySelector('.fas').addEventListener('click', sum); */
-
-
-        /*affichage Lightbox*/
-        /* class lightbox{
-            static init(){
-                const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'))
-                const gallery = links.map(link =>link.getAttribute('href'))
-
-                    links.forEach(link => link.addEventListener('click', e=>{
-                        e.preventDefault()
-                        new lightbox(e.currentTarget.getAttribute('href'), gallery)
-                    }))
-            }
-
-            constructor (url, images){
-                const element = this.buildDOM(url)
-                this.images = gallery
-                this.onKeyUp = this.onKeyUp.bind(this)
-                document.body.appendChild(element)
-                document.addEventListener('keyup', this.onKeyUp)
-            }
-
-            onKeyUp(e){
-                if(e.key =='Escape'){
-                    this.close
-                } else if(e.key == 'ArrowLeft'){
-                    this.prev(e)
-                } else if(e.key == 'ArrowRight'){
-                    this.next(e)
-                }
-            }
-
-            close(e){
-                e.preventDefault()
-                this.element.style.display = "none";
-                window.setTimeout(()=>{
-                    this.element.parentElement.removeChild(this.element)
-                }, 500)
-                document.removeEventListener('keyup', this.onKeyUp)
-            }
-
-            next(e){
-                e.preventDefault()
-                let i = this.images.findIndex(image => i == this.url)
-                if(i == this.image.length -1){
-                    i=-1
-                }
-                this.loadImage(this.images[i + 1])
-            }
-
-            prev(e){
-                e.preventDefault()
-                let i = this.images.findIndex(image => i == this.url)
-                if(i == 0){
-                    i = this.image.length
-                }
-                this.loadImage(this.images[i - 1])
-            }
-
-            buildDOM (url){
-                const dom = document.createElement('div')
-                dom.classList.add('lightbox')
-                dom.innerHTML = `<i class="fas fa-times lightbox_close" alt="close""></i>
-                <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
-                <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
-                <div class="lightbox_container">
-                ${url}
-                </div>`
-                dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this))
-                dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this))
-                dom.querySelector('lightbox_prev').addEventListener('click', this.prev.bind(this))
-                return dom;
-            }
-        }
-
-        lightbox.init() */
-
+        document.querySelectorAll('.heartmedia').forEach(heart =>{
+            heart.addEventListener('click', addLike);
+        })
     })
 
     
@@ -256,3 +104,164 @@ function showMedia(photographer, photoResult){
     </article>`;
         }
 }
+
+
+/*Rajoute 1 au click des likes*/
+
+function addLike(){
+    let likedElement = this.closest(".likesbox").querySelector('.liked');
+    let liked = parseInt(likedElement.innerHTML);
+    liked++;
+    likedElement.innerHTML = liked;
+}
+
+
+
+/*affichage Lightbox*/
+class lightbox{
+    static init(){
+        const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'))
+        const gallery = links.map(link =>link.getAttribute('href'))
+
+            links.forEach(link => link.addEventListener('click', e=>{
+                e.preventDefault()
+                new lightbox(e.currentTarget.getAttribute('href'), gallery)
+            }))
+    }
+
+    constructor (url, images){
+        const element = this.buildDOM(url)
+        this.images = gallery
+        this.onKeyUp = this.onKeyUp.bind(this)
+        document.body.appendChild(element)
+        document.addEventListener('keyup', this.onKeyUp)
+    }
+
+    onKeyUp(e){
+        if(e.key =='Escape'){
+            this.close
+        } else if(e.key == 'ArrowLeft'){
+            this.prev(e)
+        } else if(e.key == 'ArrowRight'){
+            this.next(e)
+        }
+    }
+
+    close(e){
+        e.preventDefault()
+        this.element.style.display = "none";
+        window.setTimeout(()=>{
+            this.element.parentElement.removeChild(this.element)
+        }, 500)
+        document.removeEventListener('keyup', this.onKeyUp)
+    }
+
+    next(e){
+        e.preventDefault()
+        let i = this.images.findIndex(image => i == this.url)
+        if(i == this.image.length -1){
+            i=-1
+        }
+    }
+
+    prev(e){
+        e.preventDefault()
+        let i = this.images.findIndex(image => i == this.url)
+        if(i == 0){
+            i = this.image.length
+        }
+    }
+
+    buildDOM (url){
+        const dom = document.createElement('div')
+        dom.classList.add('lightbox')
+        dom.innerHTML = `<i class="fas fa-times lightbox_close" alt="close""></i>
+        <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
+        <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
+        <div class="lightbox_container">
+        ${url}
+        </div>`
+        dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this))
+        dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this))
+        dom.querySelector('lightbox_prev').addEventListener('click', this.prev.bind(this))
+        return dom;
+    }
+}
+
+lightbox.init()
+
+
+/*Ouverture de la Modal*/
+function openModal(){
+    modalZone.innerHTML = `<div alt="modal" class="modal">
+    <p>Contactez moi</p>
+    <i class="fa fa-times" id="close"></i>
+    <p>${photographer.name}</p>
+    <form
+          name="contact"
+          action="#"
+          method="get"
+          onsubmit="return validate();"
+        >
+    <label for="lastname">Prénom</label>
+        <input
+            class="text-control"
+            type="text"
+            id="firstname"
+            name="last"
+            required
+        />
+    <label for="firstname">Nom</label>
+        <input
+            class="text-control"
+            type="text"
+            id="lastname"
+            name="last"
+            required
+        />
+    <label for="mail">E-mail</label>
+        <input
+            class="text-control"
+            type="email"
+            id="mail"
+            name="email"
+            required
+        />
+    <label for="message">Message</label>
+        <textarea
+            id="message"
+            rows="5"
+            required
+        >
+        </textarea>
+        <input
+            type="submit"
+            class="send_button"
+            value="Envoyer"
+      />
+    </form>
+</div>`
+
+allPage.style.opacity = "0.5";
+
+
+/*Fermeture de la Modal*/
+const closeButton = document.querySelector('#close');
+const modal = document.querySelector('.modal');
+closeButton.addEventListener('click', function close(){
+    modal.style.display = "none";
+    allPage.style.opacity = "1";
+    });
+}
+
+/*compteur des likes*/
+function showTotalLikes (photoResult){
+    var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
+    document.querySelector('.compteur .likes').innerHTML= likes;
+};
+
+/*affichage prix/jour*/
+function showTotalprice (photographer){
+    var price = photographer.price;
+    document.querySelector('.compteur .price').innerHTML= price;
+};

@@ -6,24 +6,6 @@ fetch('FishEyeDataFR.json')
 	.then(data => {
 		showPhotographers()
 
-		/*tri des photographes*/
-/*  		document.querySelector('.categories').addEventListener('click', function(){
-            var filterResult = null;
-			var card = document.querySelector('#card');
-            switch(this.value){
-                case "#Portrait":
-                    filterResult = data.photographers;
-					for(data.photographers.tags != this.value of this.value){
-						card.getElementsByClassName.display = "none";
-					}
-                break;
-                default:
-                break;
-            }
-			showPhotographers (filterResult)
-		}) */
-
-
 		/*Affichage des photographes*/
 		function showPhotographers(){
 			var photographersElement = document.getElementById('photographers');
@@ -56,4 +38,17 @@ fetch('FishEyeDataFR.json')
 					</article>`;
 		}
 		}
+
+		/*tri des photographes*/
+		document.querySelectorAll('.btn_select').addEventListener('click', function(){
+		var filterResult = null;
+		switch(this.value){
+		case '#Portrait':
+			filterResult = photographersElement.filter(photographers => photographers.tags);
+		break;
+		default:
+		break;
+	}
+	showPhotographers ();
+})
 	})

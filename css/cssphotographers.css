@@ -273,9 +273,9 @@ h1 {
 
 /* line 246, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 .media_box img {
-  height: 200%;
+  width: 160%;
   position: relative;
-  bottom: 50px;
+  vertical-align: middle;
 }
 
 /* line 252, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
