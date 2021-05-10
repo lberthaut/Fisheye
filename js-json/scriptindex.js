@@ -39,6 +39,8 @@ fetch('FishEyeDataFR.json')
 			}
 		}
 
+
+		
 		/*tri des photographes*/
 		const btn = document.getElementsByClassName("btn_select");
 		btn.addEventListener('click', showFiltered);

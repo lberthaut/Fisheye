@@ -244,9 +244,11 @@ h1{
 }
 
 .media_box img{
-    width: 160%;
-    position: relative;
-    vertical-align: middle;
+    min-width: 350px;
+    position: absolute;
+    min-height: 300px;
+    max-height: 400px;
+    object-fit: cover
 }
 
 .media_format{
@@ -255,6 +257,7 @@ h1{
     height: 300px;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
 }
 
 video{
@@ -393,6 +396,10 @@ video{
     min-height: 100vh;
 }
 
+.lightbox__loader{
+    src: "https://samherbert.net/svg-loaders/svg-loaders/spinning-circles.svg"
+}
+
 @keyframes lightboxIn{
     from{opacity: 0;}
     to{opacity: 1;}
@@ -466,5 +473,5 @@ video{
         margin: 0 auto;
     }
 
-    /* J'en ai marre !!!! */
+    /* J'en ai marre, bordel  !!!! */
 }

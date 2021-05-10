@@ -183,75 +183,93 @@ function addLike(){
 /*affichage Lightbox*/
 class lightbox{
     static init(){
-        const imageZone = document.querySelector('#medias_sections')
-        const links = Array.from(imageZone.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'))
-        const gallery = links.map(link =>link.getAttribute('href'))
+        const imageZone = document.querySelector('#medias_sections');
+        const links = Array.from(imageZone.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
+        const gallery = links.map(link =>link.getAttribute('href'));
             links.forEach(link => link.addEventListener('click', e=>{
-                e.preventDefault()
-                new lightbox(e.currentTarget.getAttribute('href'), gallery)
+                e.preventDefault();
+                new lightbox(e.currentTarget.getAttribute('href'), gallery);
             }))
     }
 
     constructor (url){
-        const element = this.buildDOM(url)
-        this.image = gallery
-        this.onKeyUp = this.onKeyUp.bind(this)
-        document.body.appendChild(element)
-        document.addEventListener('keyup', this.onKeyUp)
+        const element = this.buildDOM(url);
+        this.image = gallery;
+        this.onKeyUp = this.onKeyUp.bind(this);
+        document.body.appendChild(element);
+        document.addEventListener('keyup', this.onKeyUp);
     }
+
+    loadImage (url) {
+        this.url = null;
+        const image = new Image();
+        const container = this.element.querySelector('.lightbox__container');
+        const loader = document.createElement('div');
+        loader.classList.add('lightbox__loader');
+        container.innerHTML = '';
+        container.appendChild(loader);
+        image.onload = () => {
+          container.removeChild(loader);
+          container.appendChild(image);
+          this.url = url;
+        }
+        image.src = url;
+      }
 
     onKeyUp(e){
         if(e.key =='Escape'){
-            this.close
+            this.close;
         } else if(e.key == 'ArrowLeft'){
-            this.prev(e)
+            this.prev(e);
         } else if(e.key == 'ArrowRight'){
-            this.next(e)
+            this.next(e);
         }
     }
 
     close(e){
-        e.preventDefault()
+        e.preventDefault();
         this.element.style.display = "none";
         window.setTimeout(()=>{
             this.element.parentElement.removeChild(this.element)
         }, 500)
-        document.removeEventListener('keyup', this.onKeyUp)
+        document.removeEventListener('keyup', this.onKeyUp);
     }
 
     next(e){
         e.preventDefault()
-        let i = this.images.findIndex(image => i == this.url)
+        let i = this.images.findIndex(image => image === this.url);
         if(i == this.image.length -1){
-            i=-1
+            i=-1;
         }
+        this.loadImage(this.images[i+1]);
     }
 
     prev(e){
-        e.preventDefault()
-        let i = this.images.findIndex(image => i == this.url)
+        e.preventDefault();
+        let i = this.images.findIndex(image => image === this.url);
         if(i == 0){
-            i = this.image.length
+            i = this.image.length;
         }
+        this.loadImage(this.images[i-1]);
     }
 
-    buildDOM (gallery){
-        const dom = document.createElement('div')
-        dom.classList.add('lightbox')
+    buildDOM (url){
+        const dom = document.createElement('div');
+        dom.classList.add('lightbox');
         dom.innerHTML = `<i class="fas fa-times lightbox_close" alt="close""></i>
         <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
         <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
         <div class="lightbox_container">
-        ${gallery}
-        </div>`
-        dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this))
-        dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this))
-        dom.querySelector('lightbox_prev').addEventListener('click', this.prev.bind(this))
+        ${url}
+        </div>`;
+        dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this));
+        dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this));
+        dom.querySelector('lightbox_prev').addEventListener('click', this.prev.bind(this));
         return dom;
     }
 }
 
-lightbox.init()
+lightbox.init();
 
 
 
@@ -265,7 +283,6 @@ lightbox.init()
 
         init(){
             for(let image of this.listImage){
-
             }
         }
 
