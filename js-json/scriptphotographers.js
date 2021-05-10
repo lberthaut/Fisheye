@@ -45,6 +45,69 @@ fetch('FishEyeDataFR.json')
 
         contactButton.addEventListener('click', openModal);
 
+        function openModal(){
+            modalZone.innerHTML = `<div alt="modal" class="modal">
+            <p>Contactez moi</p>
+            <i class="fa fa-times" id="close"></i>
+            <p>${photographer.name}</p>
+            <form
+                  name="contact"
+                  action="#"
+                  method="get"
+                  onsubmit="return validate();"
+                >
+            <label for="lastname">Prénom</label>
+                <input
+                    class="text-control"
+                    type="text"
+                    id="firstname"
+                    name="last"
+                    required
+                />
+            <label for="firstname">Nom</label>
+                <input
+                    class="text-control"
+                    type="text"
+                    id="lastname"
+                    name="last"
+                    required
+                />
+            <label for="mail">E-mail</label>
+                <input
+                    class="text-control"
+                    type="email"
+                    id="mail"
+                    name="email"
+                    required
+                />
+            <label for="message">Message</label>
+                <textarea
+                    id="message"
+                    rows="5"
+                    required
+                >
+                </textarea>
+                <input
+                    type="submit"
+                    class="send_button"
+                    value="Envoyer"
+              />
+            </form>
+        </div>`
+
+        document.getElementById('firstname').focus();
+        allPage.style.opacity = "0.5";
+        
+        
+        /*Fermeture de la Modal*/
+        const closeButton = document.querySelector('#close');
+        const modal = document.querySelector('.modal');
+        closeButton.addEventListener('click', function close(){
+            modal.style.display = "none";
+            allPage.style.opacity = "1";
+            });
+        }
+
 
         /*Tri des medias*/
         document.querySelector('#selection').addEventListener('change', function(){
@@ -120,18 +183,18 @@ function addLike(){
 /*affichage Lightbox*/
 class lightbox{
     static init(){
-        const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'))
+        const imageZone = document.querySelector('#medias_sections')
+        const links = Array.from(imageZone.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'))
         const gallery = links.map(link =>link.getAttribute('href'))
-
             links.forEach(link => link.addEventListener('click', e=>{
                 e.preventDefault()
                 new lightbox(e.currentTarget.getAttribute('href'), gallery)
             }))
     }
 
-    constructor (url, images){
+    constructor (url){
         const element = this.buildDOM(url)
-        this.images = gallery
+        this.image = gallery
         this.onKeyUp = this.onKeyUp.bind(this)
         document.body.appendChild(element)
         document.addEventListener('keyup', this.onKeyUp)
@@ -172,14 +235,14 @@ class lightbox{
         }
     }
 
-    buildDOM (url){
+    buildDOM (gallery){
         const dom = document.createElement('div')
         dom.classList.add('lightbox')
         dom.innerHTML = `<i class="fas fa-times lightbox_close" alt="close""></i>
         <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
         <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
         <div class="lightbox_container">
-        ${url}
+        ${gallery}
         </div>`
         dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this))
         dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this))
@@ -191,68 +254,72 @@ class lightbox{
 lightbox.init()
 
 
-/*Ouverture de la Modal*/
-function openModal(){
-    modalZone.innerHTML = `<div alt="modal" class="modal">
-    <p>Contactez moi</p>
-    <i class="fa fa-times" id="close"></i>
-    <p>${photographer.name}</p>
-    <form
-          name="contact"
-          action="#"
-          method="get"
-          onsubmit="return validate();"
-        >
-    <label for="lastname">Prénom</label>
-        <input
-            class="text-control"
-            type="text"
-            id="firstname"
-            name="last"
-            required
-        />
-    <label for="firstname">Nom</label>
-        <input
-            class="text-control"
-            type="text"
-            id="lastname"
-            name="last"
-            required
-        />
-    <label for="mail">E-mail</label>
-        <input
-            class="text-control"
-            type="email"
-            id="mail"
-            name="email"
-            required
-        />
-    <label for="message">Message</label>
-        <textarea
-            id="message"
-            rows="5"
-            required
-        >
-        </textarea>
-        <input
-            type="submit"
-            class="send_button"
-            value="Envoyer"
-      />
-    </form>
-</div>`
 
-allPage.style.opacity = "0.5";
+/* class LightBox{
+        constructor(listImage, selector){
+            this.listImage = listImage;
+            this.current = null;
+            this.selector = selector;
+            this.element = document.querySelector(selector);
+        }
+
+        init(){
+            for(let image of this.listImage){
+
+            }
+        }
+
+        add(image){
+            this.listImage.push(image);
+        }
+
+        play(){
+            this.current = this.listImage[0];
+            document.querySelector(this.selector + "img:first-child");
+        }
+
+        next(){
+            for(let i=0; i<this.listImage.length; i++){
+                if(this.listImage[i] == this.current){
+                    if(i == (this.listImage.length - 1)){
+                        this.current = this.listImage[0];
+                        var activ = this.element.querySelector(this.selector);
+                    }else{
+                        this.current = this.listImage[++i];
+                        var activ = this.element.querySelector(this.selector);
+                    }
+                    activ.setAttribute("class", "");
+                    break;
+                }
+            }
+
+        }
+
+        previous(){
+            for(let i=0; i<this.listImage.length; i++){
+                if(this.listImage[i] == this.current){
+                    if(i == 0){
+                        this.current = this.listImage[this.listImage.length-1];
+                        var activ = this.element.querySelector(this.selector);
+                    }else{
+                        this.current = this.listImage[--1];
+                        var activ = this.element.querySelector(this.selector);
+                    }
+                    activ.setAttribute("class", "");
+                    break;
+                }
+            }
+        }
+        prepareEvent(){
+
+        }
+} */
 
 
-/*Fermeture de la Modal*/
-const closeButton = document.querySelector('#close');
-const modal = document.querySelector('.modal');
-closeButton.addEventListener('click', function close(){
-    modal.style.display = "none";
-    allPage.style.opacity = "1";
-    });
-}
+
+
+
+
 
 /*compteur des likes*/
 function showTotalLikes (photoResult){

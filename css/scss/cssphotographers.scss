@@ -381,7 +381,7 @@ video{
 .lightbox_container img{
     max-width: 100%;
     height: auto;
-    animation: lightboxIn 0.5s;
+    animation: lightboxIn 0.3s;
 }
 
 .lightbox_container{
@@ -460,6 +460,10 @@ video{
 
     .media_box{
         height: 250px;
+    }
+
+    .modal{
+        margin: 0 auto;
     }
 
     /* J'en ai marre !!!! */

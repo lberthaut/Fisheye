@@ -427,7 +427,7 @@ video {
 .lightbox_container img {
   max-width: 100%;
   height: auto;
-  animation: lightboxIn 0.5s;
+  animation: lightboxIn 0.3s;
 }
 
 /* line 387, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
@@ -510,6 +510,10 @@ video {
   /* line 461, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
   .media_box {
     height: 250px;
+  }
+  /* line 465, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
+  .modal {
+    margin: 0 auto;
   }
   /* J'en ai marre !!!! */
 }
