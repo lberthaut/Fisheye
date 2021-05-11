@@ -36,6 +36,13 @@ fetch('FishEyeDataFR.json')
 		showMedia(photographer, photoResult);
         showTotalLikes(photoResult);
         showTotalprice(photographer);
+        var lightbox = new Lightbox(photoResult, document.querySelector('#lightbox'), photographer.name);
+        document.querySelectorAll('.open-lightbox').forEach(media => {
+            media.addEventListener('click', function(){
+                lightbox.init(this.dataset.id);
+            })
+            
+        });
 
 
         /*Ouverture de la Modal de contact*/
@@ -143,11 +150,11 @@ function showMedia(photographer, photoResult){
         var media = "";
         var title = "";
         if(photosData.image != undefined){
-            media = `<a href="photos/sample/${photographerName[0]}/${photosData.image}" data-lightbox="mygallery"><img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="${photosData.alt}"></a>`;
+            media = `<img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="${photosData.alt}" class="open-lightbox" data-id="${photosData.id}">`;
             title = photosData.image;
         }
         if(photosData.video != undefined){
-            media = `<a href="photos/sample/${photographerName[0]}/${photosData.video}" data-lightbox="mygallery"><video preload="metadata"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4" alt="${photosData.alt}></video></a>`;
+            media = `<video preload="metadata" class="open-lightbox" data-id="${photosData.id}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4" alt="${photosData.alt}></video>`;
             title = photosData.video;
         }
         mediaElement.innerHTML += `<article alt="photos" class="media_box">
@@ -181,95 +188,9 @@ function addLike(){
 
 
 /*affichage Lightbox*/
-class lightbox{
-    static init(){
-        const imageZone = document.querySelector('#medias_sections');
-        const links = Array.from(imageZone.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
-        const gallery = links.map(link =>link.getAttribute('href'));
-            links.forEach(link => link.addEventListener('click', e=>{
-                e.preventDefault();
-                new lightbox(e.currentTarget.getAttribute('href'), gallery);
-            }))
-    }
 
-    constructor (url){
-        const element = this.buildDOM(url);
-        this.image = gallery;
-        this.onKeyUp = this.onKeyUp.bind(this);
-        document.body.appendChild(element);
-        document.addEventListener('keyup', this.onKeyUp);
-    }
 
-    loadImage (url) {
-        this.url = null;
-        const image = new Image();
-        const container = this.element.querySelector('.lightbox__container');
-        const loader = document.createElement('div');
-        loader.classList.add('lightbox__loader');
-        container.innerHTML = '';
-        container.appendChild(loader);
-        image.onload = () => {
-          container.removeChild(loader);
-          container.appendChild(image);
-          this.url = url;
-        }
-        image.src = url;
-      }
 
-    onKeyUp(e){
-        if(e.key =='Escape'){
-            this.close;
-        } else if(e.key == 'ArrowLeft'){
-            this.prev(e);
-        } else if(e.key == 'ArrowRight'){
-            this.next(e);
-        }
-    }
-
-    close(e){
-        e.preventDefault();
-        this.element.style.display = "none";
-        window.setTimeout(()=>{
-            this.element.parentElement.removeChild(this.element)
-        }, 500)
-        document.removeEventListener('keyup', this.onKeyUp);
-    }
-
-    next(e){
-        e.preventDefault()
-        let i = this.images.findIndex(image => image === this.url);
-        if(i == this.image.length -1){
-            i=-1;
-        }
-        this.loadImage(this.images[i+1]);
-    }
-
-    prev(e){
-        e.preventDefault();
-        let i = this.images.findIndex(image => image === this.url);
-        if(i == 0){
-            i = this.image.length;
-        }
-        this.loadImage(this.images[i-1]);
-    }
-
-    buildDOM (url){
-        const dom = document.createElement('div');
-        dom.classList.add('lightbox');
-        dom.innerHTML = `<i class="fas fa-times lightbox_close" alt="close""></i>
-        <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
-        <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
-        <div class="lightbox_container">
-        ${url}
-        </div>`;
-        dom.querySelector('lightbox_close').addEventListener('click', this.close.bind(this));
-        dom.querySelector('lightbox_next').addEventListener('click', this.next.bind(this));
-        dom.querySelector('lightbox_prev').addEventListener('click', this.prev.bind(this));
-        return dom;
-    }
-}
-
-lightbox.init();
 
 
 
@@ -331,12 +252,6 @@ lightbox.init();
 
         }
 } */
-
-
-
-
-
-
 
 /*compteur des likes*/
 function showTotalLikes (photoResult){

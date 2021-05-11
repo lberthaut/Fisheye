@@ -263,6 +263,7 @@ h1{
 video{
     height: 300px;
     overflow: hidden;
+    
 }
 
 .medias_infos{
@@ -344,7 +345,7 @@ video{
     margin-left: 5px;
 }
 
-.lightbox{
+#lightbox{
     position: fixed;
     top: 0;
     left: 0;
@@ -353,6 +354,7 @@ video{
     background-color: white;
     z-index: 100;
     animation: lightboxIn 0.5s;
+    display: none;
 }
 
 .lightbox_next, .lightbox_prev{
@@ -397,7 +399,9 @@ video{
 }
 
 .lightbox__loader{
-    src: "https://samherbert.net/svg-loaders/svg-loaders/spinning-circles.svg"
+    src: "https://samherbert.net/svg-loaders/svg-loaders/spinning-circles.svg";
+    width: 50px;
+    height: 50px;
 }
 
 @keyframes lightboxIn{
