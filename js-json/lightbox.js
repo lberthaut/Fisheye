@@ -6,24 +6,23 @@ class Lightbox{
         <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
         <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
         <div class="lightbox_container">
-        
         </div>`;
         this.name = (photographerName.split(' '))[0];
         this.element.querySelector('.lightbox_close').addEventListener('click', ()=>this.close());
         this.element.querySelector('.lightbox_next').addEventListener('click', ()=>this.next());
         this.element.querySelector('.lightbox_prev').addEventListener('click', ()=>this.prev());
-        /* this.element.addEventListener("keydown", function(event) {
-            switch(event.code) {
+        this.element.addEventListener('keydown', (e) => {
+            switch (e.key) {
               case "ArrowLeft":
-                this.prev();
+                ()=>this.prev();
                 break;
               case "ArrowRight":
-                this.next();
+                ()=>this.next();
                 break;
               case "Escape":
-                this.close();
+                ()=>this.close();
                 break;
-            }}) */
+            }})
           
     }
 
@@ -37,10 +36,10 @@ class Lightbox{
         this.currentMedia = media;
         var mediaElement = null;
         if(media.image != undefined){
-            mediaElement = `<img src="photos/sample/${this.name}/${media.image}" alt="${media.alt}">`;
+            mediaElement = `<img src="photos/sample/${this.name}/${media.image}" alt="${media.alt}"><p class="text-lightbox">${media.image.replace('.jpg',"").replace(/_/g," ")}</p>`;
         }
         if(media.video != undefined){
-            mediaElement = `<video preload="metadata"><source src="photos/sample/${this.name}/${media.video}" type="video/mp4" alt="${media.alt}></video>`;
+            mediaElement = `<video preload="metadata" controls><source src="photos/sample/${this.name}/${media.video}" type="video/mp4" alt="${media.alt}></video><p class="text-lightbox">${media.video.replace(/_/g," ").replace('.mp4',"")}</p>`;
         }
         this.element.querySelector('.lightbox_container').innerHTML = mediaElement;
     }
@@ -64,17 +63,6 @@ class Lightbox{
             this.showMedia(this.listMedia[index - 1]);
         }else{
             this.showMedia(this.listMedia[this.listMedia.length - 1]);
-        }
-    }
-
-    Keyboard() {
-        var x = keyCode;
-        if (x == 27){
-            this.close();
-        }if(x == 37){
-            this.prev();
-        }if(x == 39){
-            this.next()
         }
     }
 }
