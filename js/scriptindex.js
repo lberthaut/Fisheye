@@ -38,24 +38,68 @@ fetch('FishEyeDataFR.json')
 
 		/*Tri des photographes*/
 		const btns = document.querySelectorAll('.btn_select');
-		const filteredArea = document.querySelectorAll('#photographers');
-		const tags = data.photographers.tags;
+		const photographerCard = document.getElementById('card');
+		const tags = data.photographers.find(p => p.tags);
+		const btnValue = btns.value;
 
 		for (i = 0; i < btns.length; i++) {
+			let btnArray = [];
+			btnArray.push(btnValue);
 			btns[i].addEventListener('click', (e) => {
 				e.preventDefault();
-				const filter = e.target.dataset.filter;
-				filteredArea.forEach((article)=> {
-					if (filter === tags){
-						article.style.display = 'block';
+				btnArray.forEach(()=> {
+					if (btnValue === '#'+tags){
+						photographerCard.style.display = 'block';
 					} else {
-						if (article.classList.contains(filter)){
-							article.style.display = 'block';
+						if (photographerCard.includes('#'+tags)){
+							photographerCard.style.display = 'block';
 						} else {
-							article.style.display = 'none';
+							photographerCard.style.display = 'none';
 						}
 					}
 				});
 			});
 		};
+
+
+
+		/*test-essai tri bis*/
+		/* let arrayWithOnlyTagsSelected = [];
+		const artistData = data.photographers;
+		const aTagElts = document.querySelectorAll('.btn_select');
+
+      	aTagElts.forEach((aTagElt) => {
+        aTagElt.addEventListener("click", function (e) {
+        	e.preventDefault();
+        	let tagSelected = window.event.target.textContent || window.event.target.innerText;
+        	if (arrayWithOnlyTagsSelected.includes(tagSelected)) {
+        		arrayWithOnlyTagsSelected = arrayWithOnlyTagsSelected.filter((item) => item != tagSelected);
+        	} else{
+            	arrayWithOnlyTagsSelected.push(tagSelected);
+          	}
+
+        	let newArtistDatas = [];
+
+			if (arrayWithOnlyTagsSelected.length == 0) {
+				newArtistDatas = artistData;
+			} else {
+            	for (let a in artistData) {
+            		let cardWithAllTags = true;
+
+            		arrayWithOnlyTagsSelected.forEach((element) => {
+                		if (!artistData[a].tags.includes(element)) {
+                  			cardWithAllTags = false;
+                		}
+					});
+              		if (cardWithAllTags) {
+                		newArtistDatas.push(artistData[a]);
+              		}
+            	}
+          	}
+        });
+      }); */
+
+
+
+
 	})

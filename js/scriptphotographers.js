@@ -40,8 +40,7 @@ fetch('FishEyeDataFR.json')
         document.querySelectorAll('.open-lightbox').forEach(media => {
             media.addEventListener('click', function(){
                 lightbox.init(this.dataset.id);
-            })
-            
+            }) 
         });
 
 
@@ -133,6 +132,13 @@ fetch('FishEyeDataFR.json')
                 break;
             }
             showMedia (photographer, filterResult);
+            /*Initialisation de la Lightbox lors d'un tri*/
+            var lightbox = new Lightbox(photoResult, document.querySelector('#lightbox'), photographer.name);
+            document.querySelectorAll('.open-lightbox').forEach(media => {
+            media.addEventListener('click', function(){
+                lightbox.init(this.dataset.id);
+            }) 
+        });
         })
 
         document.querySelectorAll('.heartmedia').forEach(heart =>{

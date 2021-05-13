@@ -11,16 +11,16 @@ class Lightbox{
         this.element.querySelector('.lightbox_close').addEventListener('click', ()=>this.close());
         this.element.querySelector('.lightbox_next').addEventListener('click', ()=>this.next());
         this.element.querySelector('.lightbox_prev').addEventListener('click', ()=>this.prev());
-        this.element.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', (e) => {
             switch (e.key) {
               case "ArrowLeft":
-                ()=>this.prev();
+                this.prev();
                 break;
               case "ArrowRight":
-                ()=>this.next();
+                this.next();
                 break;
               case "Escape":
-                ()=>this.close();
+                this.close();
                 break;
             }})
           
