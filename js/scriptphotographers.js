@@ -5,6 +5,7 @@ fetch('FishEyeDataFR.json')
 	.then(result => 
 		result.json())
 	.then(data => {
+        /*Affichage des infos du photographes en fonction de ses données Json*/
         var photographer = data.photographers.find(p => p.id == id);
         var photoResult = data.media.filter(media => media.photographerId == id);
         var tags = "";
@@ -33,15 +34,24 @@ fetch('FishEyeDataFR.json')
                 <img src="photos/sample/id_photos/${photographer.portrait}" alt="photographers_photo" class="format_photos">
             </div>`
         
+        /*Affichage des medias*/
 		showMedia(photographer, photoResult);
+        /*Affichage du nombres total de likes*/
         showTotalLikes(photoResult);
+        /*Affichage du prix/jour*/
         showTotalprice(photographer);
+        /*Affichage Lightbox*/
         var lightbox = new Lightbox(photoResult, document.querySelector('#lightbox'), photographer.name);
         document.querySelectorAll('.open-lightbox').forEach(media => {
             media.addEventListener('click', function(){
                 lightbox.init(this.dataset.id);
             }) 
         });
+
+        /*Incrementation d'un like*/
+        document.querySelectorAll('.heartmedia').forEach(heart =>{
+            heart.addEventListener('click', addLike);
+        })
 
 
         /*Ouverture de la Modal de contact*/
@@ -51,6 +61,7 @@ fetch('FishEyeDataFR.json')
 
         contactButton.addEventListener('click', openModal);
 
+        /*Fonction d'ouverture et de fermeture de la Modal*/
         function openModal(){
             modalZone.innerHTML = `<div alt="modal" class="modal">
             <p>Contactez moi</p>
@@ -66,7 +77,7 @@ fetch('FishEyeDataFR.json')
                 <input
                     class="text-control"
                     type="text"
-                    id="firstname"
+                    id="lastname"
                     name="last"
                     required
                 />
@@ -74,7 +85,7 @@ fetch('FishEyeDataFR.json')
                 <input
                     class="text-control"
                     type="text"
-                    id="lastname"
+                    id="firstname"
                     name="last"
                     required
                 />
@@ -119,11 +130,11 @@ fetch('FishEyeDataFR.json')
         document.querySelector('#selection').addEventListener('change', function(){
             var filterResult = null;
             switch(this.value){
-                case "date":
-                    filterResult = photoResult.sort((a,b)=> Date.parse(b.date) - Date.parse(a.date));
-                break;
                 case "popularite":
                     filterResult =  photoResult.sort((a,b)=> b.likes - a.likes);
+                break;
+                case "date":
+                    filterResult = photoResult.sort((a,b)=> Date.parse(b.date) - Date.parse(a.date));
                 break;
                 case "titre":
                     filterResult = photoResult.sort((a, b)=> a.image.localeCompare(b.image));
@@ -140,14 +151,10 @@ fetch('FishEyeDataFR.json')
             }) 
         });
         })
-
-        document.querySelectorAll('.heartmedia').forEach(heart =>{
-            heart.addEventListener('click', addLike);
-        })
     })
 
     
-/*Affichage des medias*/
+/*Fonction d'affichage des medias*/
 function showMedia(photographer, photoResult){
     var mediaElement = document.querySelector('#medias_sections');
     mediaElement.innerHTML = "";
@@ -160,7 +167,7 @@ function showMedia(photographer, photoResult){
             title = photosData.image;
         }
         if(photosData.video != undefined){
-            media = `<video preload="metadata" class="open-lightbox" data-id="${photosData.id}" alt="${photosData.alt}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4"></video>`;
+            media = `<video preload="metadata" class="open-lightbox vignette-video" data-id="${photosData.id}" alt="${photosData.alt}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4"></video>`;
             title = photosData.video;
         }
         mediaElement.innerHTML += `<article alt="photos" class="media_box">
@@ -182,8 +189,7 @@ function showMedia(photographer, photoResult){
 }
 
 
-/*Rajoute 1 au click des likes*/
-
+/*Fonction d'incrémentation du like au click*/
 function addLike(){
     let likedElement = this.closest(".likesbox").querySelector('.liked');
     let liked = parseInt(likedElement.innerHTML);
@@ -191,13 +197,13 @@ function addLike(){
     likedElement.innerHTML = liked;
 }
 
-/*compteur des likes*/
+/*Fonction du compteur total des likes*/
 function showTotalLikes (photoResult){
     var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
     document.querySelector('.compteur .likes').innerHTML= likes;
 };
 
-/*affichage prix/jour*/
+/*Fonction d'affichage prix/jour*/
 function showTotalprice (photographer){
     var price = photographer.price;
     document.querySelector('.compteur .price').innerHTML= price;

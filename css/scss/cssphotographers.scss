@@ -260,7 +260,7 @@ h1{
     position: relative;
 }
 
-video{
+.vignette-video{
     height: 300px;
     overflow: hidden;
     
@@ -411,9 +411,17 @@ video{
     margin-top: 10px;
 }
 
+.video-lightbox{
+    width: 800px;
+}
+
 
 /*Query Smartphone*/
 @media screen and (max-width: 840px) {
+
+    #bloc_page{
+        margin: 0 auto;
+    }
 
     .btn_contact{
         position: absolute;
@@ -434,6 +442,7 @@ video{
     #profile{
         padding: 0;
         height: 200px;
+        width: 330px;
     }
 
     #profile p{
@@ -464,15 +473,17 @@ video{
 
     .media_format{
         height: 190px;
-        width: 335px;
+        width: 330px;
     }
 
     .medias_infos{
-        width: 335px;
+        width: 330px;
     }
 
     .media_box{
+        width: 330px;
         height: 250px;
+        margin-right : 10px;
     }
 
     .modal{
@@ -480,6 +491,12 @@ video{
     }
 
     .lightbox_container img{
-        max-width: 60vh;
+        max-width: 80%;
+        min-height: 50vh;
+        max-height: 80vh;
+    }
+
+    .lightbox_container video{
+        width: 300px;
     }
 }

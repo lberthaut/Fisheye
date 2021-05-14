@@ -39,7 +39,7 @@ class Lightbox{
             mediaElement = `<img src="photos/sample/${this.name}/${media.image}" alt="${media.alt}"><p class="text-lightbox">${media.image.replace('.jpg',"").replace(/_/g," ")}</p>`;
         }
         if(media.video != undefined){
-            mediaElement = `<video preload="metadata" controls alt="${media.alt}"><source src="photos/sample/${this.name}/${media.video}" type="video/mp4"></video><p class="text-lightbox">${media.video.replace(/_/g," ").replace('.mp4',"")}</p>`;
+            mediaElement = `<video preload="metadata" controls alt="${media.alt}" autoplay class="video-lightbox"><source src="photos/sample/${this.name}/${media.video}" type="video/mp4"></video><p class="text-lightbox">${media.video.replace(/_/g," ").replace('.mp4',"")}</p>`;
         }
         this.element.querySelector('.lightbox_container').innerHTML = mediaElement;
     }

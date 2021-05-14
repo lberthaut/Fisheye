@@ -52,3 +52,9 @@ function showPhotographers(listPhotographers){
 				</article>`;
 	}
 }
+
+/*Affichage Ancre contenu*/
+document.addEventListener('scroll', ()=>{
+	const urlZone = document.querySelector('.url-ancre');
+	urlZone.innerHTML = `<a href=#ancre class="lien-ancre-tags">Passer au contenu</a>`
+})
