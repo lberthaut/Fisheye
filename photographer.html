@@ -8,40 +8,40 @@
   <script src="https://kit.fontawesome.com/959f234b81.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="modal_zone">
+    <div id="modal_zone" role="Zone de la modal" aria-labelledby="Modal de contact">
     </div>
-    <div id="bloc_page">
-        <header alt="head of page" class="head">
-            <banner>
-                <a href="index.html">
-                    <img src="photos/logo.png" alt="Fisheye Home page" class="logo">
+    <div id="bloc_page" aria-label="contenu de la page">
+        <header alt="haut de page" class="head">
+            <banner aria-label="bannière">
+                <a href="index.html" tabindex="0" aria-label="Lien pour l'accueil">
+                    <img src="photos/logo.png" aria-label="Logo" class="logo">
                 </a>
             </banner>
         </header>
-        <main alt="photographers page" id="profile">
+        <main alt="Contenu du photographe" id="profile">
         </main>
-        <div class="compteur">
-            <span class="likes"></span> 
-            <i class="fas fa-heart"></i>
-            <span class="price"></span>
-            <span>€ / jour</span>
+        <div id="compteur" aria-label="compteur de likes total et prix par jour du photographe">
+            <span class="likes" aria-labelledby="compteur"></span> 
+            <i class="fas fa-heart" aria-labelledby="compteur"></i>
+            <span class="price" aria-labelledby="compteur"></span>
+            <span aria-labelledby="compteur">€ / jour</span>
         </div>
-        <section alt="photos gallery">
+        <section alt="photos gallery" alt="contenu principal du photographe">
             <nav aria-label="sort by" id="sortby">
             <label for="selection">Trier par</label>
             <div class="select-style">
                 <select name="sort by" id="selection">
-                    <option value="popularite">Popularité</option>
-                    <option value="date">Date</option>
-                    <option value="titre">Titre</option>
+                    <option value="popularite" aria-labelledby="selection">Popularité</option>
+                    <option value="date" aria-labelledby="selection">Date</option>
+                    <option value="titre" aria-labelledby="selection">Titre</option>
                 </select>
             </div>
             </nav>
-            <section alt="photos section" id="medias_sections">
+            <section alt="photos du photographe" id="medias_sections">
             </section>
         </section>
     </div>
-    <div id="lightbox">
+    <div id="lightbox" aria-label="lightbox des photos">
     </div>
     <script src="js/lightbox.js"></script> 
     <script src="js/scriptphotographers.js"></script>

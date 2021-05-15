@@ -14,24 +14,24 @@ fetch('FishEyeDataFR.json')
 			}
             var photographerCard = document.querySelector('main');
             photographerCard.innerHTML += `<section alt="photographers informations" class="infos">
-            <h1 alt="photographers name">
+            <h1 alt="nom du photographe">
                 ${photographer.name}
             </h1>
-            <p alt="photographer city" class="city">
+            <p aria-label="ville du photographe" class="city">
                 ${photographer.city}
             </p>
-            <p alt="slogan" class="slogan">
+            <p aria-label="slogan" class="slogan">
                 ${photographer.tagline}
             </p>
-            <div class="tagsbox">
+            <div class="tagsbox" aria-label="zone de tags">
             ${tags}
             </div>
-            <nav aria-label="categories" id="tagsbox">
+            <nav alt="tags" id="tagsbox">
             </nav>
-            <input type="button" value="Contactez-moi" alt="contact me" class="btn_contact">
+            <input type="button" value="Contactez-moi" alt="Contacter le photographe" class="btn_contact">
             </section>
-            <div class="photo_graphers" alt="photographer profile pic">
-                <img src="photos/sample/id_photos/${photographer.portrait}" alt="photographers_photo" class="format_photos">
+            <div class="photo_graphers" aria-label="photo de profil du photographe">
+                <img src="photos/sample/id_photos/${photographer.portrait}" alt="photo du photographe" class="format_photos">
             </div>`
         
         /*Affichage des medias*/
@@ -63,31 +63,34 @@ fetch('FishEyeDataFR.json')
 
         /*Fonction d'ouverture et de fermeture de la Modal*/
         function openModal(){
-            modalZone.innerHTML = `<div alt="modal" class="modal">
-            <p>Contactez moi</p>
-            <i class="fa fa-times" id="close"></i>
-            <p>${photographer.name}</p>
+            modalZone.innerHTML = `<div aria-label="modal de contact" class="modal">
+            <p aria-label="contact">Contactez moi</p>
+            <i class="fa fa-times" id="close" aria-label="fermer la modal"></i>
+            <p aria-label="nom du photographe">${photographer.name}</p>
             <form
                   name="contact"
                   action="#"
                   method="get"
                   onsubmit="return validate();"
+                  id="modal"
                 >
-            <label for="lastname">Prénom</label>
+            <label for="lastname">Nom</label>
                 <input
                     class="text-control"
                     type="text"
                     id="lastname"
                     name="last"
                     required
+                    aria-labelledby="modal"
                 />
-            <label for="firstname">Nom</label>
+            <label for="firstname">Prénom</label>
                 <input
                     class="text-control"
                     type="text"
                     id="firstname"
                     name="last"
                     required
+                    aria-labelledby="modal"
                 />
             <label for="mail">E-mail</label>
                 <input
@@ -96,23 +99,26 @@ fetch('FishEyeDataFR.json')
                     id="mail"
                     name="email"
                     required
+                    aria-labelledby="modal"
                 />
             <label for="message">Message</label>
                 <textarea
                     id="message"
                     rows="5"
                     required
+                    aria-labelledby="modal"
                 >
                 </textarea>
                 <input
                     type="submit"
                     class="send_button"
                     value="Envoyer"
+                    aria-labelledby="modal"
               />
             </form>
         </div>`
 
-        document.getElementById('firstname').focus();
+        document.getElementById('lastname').focus();
         allPage.style.opacity = "0.5";
         
         
@@ -167,19 +173,19 @@ function showMedia(photographer, photoResult){
             title = photosData.image;
         }
         if(photosData.video != undefined){
-            media = `<video preload="metadata" class="open-lightbox vignette-video" data-id="${photosData.id}" alt="${photosData.alt}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4"></video>`;
+            media = `<video preload="metadata" class="open-lightbox vignette-video" data-id="${photosData.id}" title="${photosData.alt}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4"></video>`;
             title = photosData.video;
         }
         mediaElement.innerHTML += `<article alt="photos" class="media_box">
-        <div class="media_format">
+        <div class="media_format" arial-label="photo ${title}">
             ${media}
         </div>
-        <aside alt="informations" class="medias_infos">
-            <span class="titlebox">
-                <p>${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
+        <aside alt="informations de la photo" class="medias_infos">
+            <span class="titlebox" aria-label="titre de la photo">
+                <p aria-label="titre de la photo">${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
             </span>
-            <p>${photosData.price}€</p>
-            <span class="likesbox">
+            <p aria-label="prix de la photo">${photosData.price}€</p>
+            <span class="likesbox" aria-label="likes de la photo">
                 <p class="liked">${photosData.likes}</p>
                 <i class="fas fa-heart heartmedia"></i>
             </span>
@@ -200,11 +206,11 @@ function addLike(){
 /*Fonction du compteur total des likes*/
 function showTotalLikes (photoResult){
     var likes = photoResult.map(media=>media.likes).reduce((total, likes)=>total + likes);
-    document.querySelector('.compteur .likes').innerHTML= likes;
+    document.querySelector('#compteur .likes').innerHTML= likes;
 };
 
 /*Fonction d'affichage prix/jour*/
 function showTotalprice (photographer){
     var price = photographer.price;
-    document.querySelector('.compteur .price').innerHTML= price;
+    document.querySelector('#compteur .price').innerHTML= price;
 };

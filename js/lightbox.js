@@ -2,9 +2,9 @@ class Lightbox{
     constructor (listMedia, element, photographerName){
         this.listMedia = listMedia;
         this.element = element;
-        this.element.innerHTML = `<i class="fas fa-times lightbox_close" alt="close""></i>
-        <i class="fas fa-arrow-right lightbox_next" alt="next photo"></i>
-        <i class="fas fa-arrow-left lightbox_prev" alt="previous photo"></i>
+        this.element.innerHTML = `<i class="fas fa-times lightbox_close" aria-label="fermer la lightbox""></i>
+        <i class="fas fa-arrow-right lightbox_next" aria-label="prochaine photo"></i>
+        <i class="fas fa-arrow-left lightbox_prev" aria-label="précédente photo"></i>
         <div class="lightbox_container">
         </div>`;
         this.name = (photographerName.split(' '))[0];
@@ -39,7 +39,7 @@ class Lightbox{
             mediaElement = `<img src="photos/sample/${this.name}/${media.image}" alt="${media.alt}"><p class="text-lightbox">${media.image.replace('.jpg',"").replace(/_/g," ")}</p>`;
         }
         if(media.video != undefined){
-            mediaElement = `<video preload="metadata" controls alt="${media.alt}" autoplay class="video-lightbox"><source src="photos/sample/${this.name}/${media.video}" type="video/mp4"></video><p class="text-lightbox">${media.video.replace(/_/g," ").replace('.mp4',"")}</p>`;
+            mediaElement = `<video preload="metadata" controls title="${media.alt}" autoplay class="video-lightbox"><source src="photos/sample/${this.name}/${media.video}" type="video/mp4"></video><p class="text-lightbox">${media.video.replace(/_/g," ").replace('.mp4',"")}</p>`;
         }
         this.element.querySelector('.lightbox_container').innerHTML = mediaElement;
     }

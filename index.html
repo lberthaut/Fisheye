@@ -7,28 +7,28 @@
         <link rel="stylesheet" href="css/cssindex.css">
     </head>
     <body>
-        <header>
-            <banner>
-                <a href="index.html" tabindex="0">
-                    <img src="photos/logo.png" alt="Fisheye Home page" class="logo">
+        <header alt="haut de page">
+            <banner aria-label="bannière">
+                <a href="index.html" tabindex="0" aria-label="Lien pour l'accueil">
+                    <img src="photos/logo.png" aria-label="Logo" class="logo">
                 </a>
             </banner>
-            <nav aria-label="photographers categorie" class="categories" id="ancre">
-                <button alt="Tag Portrait" class="btn_select" data-tag="portrait">#Portrait</button>
-                <button alt="Tag Art" class="btn_select" data-tag="art">#Art</button>
-                <button alt="Tag Fashion" class="btn_select" data-tag="fashion">#Fashion</button>
-                <button alt="Tag Architecture" class="btn_select" data-tag="architecture">#Architecture</button>
-                <button alt="Tag Travel" class="btn_select" data-tag="travel">#Travel</button>
-                <button alt="Tag Sports" class="btn_select" data-tag="sports">#Sports</button>
-                <button alt="Tag Animals" class="btn_select" data-tag="animals">#Animals</button>
-                <button alt="Tag Events" class="btn_select" data-tag="events">#Events</button>
+            <nav aria-label="photographers tags" class="categories" id="navigation">
+                <button aria-label="Tag Portrait" class="btn_select" data-tag="portrait">#Portrait</button>
+                <button aria-label="Tag Art" class="btn_select" data-tag="art">#Art</button>
+                <button aria-label="Tag Fashion" class="btn_select" data-tag="fashion">#Fashion</button>
+                <button aria-label="Tag Architecture" class="btn_select" data-tag="architecture">#Architecture</button>
+                <button aria-label="Tag Travel" class="btn_select" data-tag="travel">#Travel</button>
+                <button aria-label="Tag Sports" class="btn_select" data-tag="sports">#Sports</button>
+                <button aria-label="Tag Animals" class="btn_select" data-tag="animals">#Animals</button>
+                <button aria-label="Tag Events" class="btn_select" data-tag="events">#Events</button>
             </nav>
-            <div class="url-ancre">
+            <div class="block-url-ancre" role="Lien pour tags" aria-labelledby="lientags">
             </div>
         </header>
-        <main>
-            <h1>Nos photographes</h1>
-            <section id="photographers">
+        <main aria-label="section principale">
+            <h1 id ="photographes">Nos photographes</h1>
+            <section id="photographers" aria-labelledby="photographes">
             </section>
         </main>
         <footer>

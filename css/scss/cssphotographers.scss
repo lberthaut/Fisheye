@@ -34,6 +34,7 @@ body{
     z-index: 2;
     margin-left: 30%;
     top: 10vh;
+    animation: boxIn 0.3s;
 }
 
 .modal p{
@@ -165,7 +166,7 @@ h1{
     cursor: pointer;
     font-size: 0.9em;
     text-transform: capitalize;
-    &:hover, &:focus{
+    &:hover{
         background-color: $redcolor;
         color: white;
     }
@@ -313,7 +314,7 @@ h1{
     cursor: pointer;
 }
 
-.compteur{
+#compteur{
     z-index: 2;
     position: fixed;
     background-color: $modalbackground;
@@ -353,7 +354,7 @@ h1{
     height: 100%;
     background-color: white;
     z-index: 100;
-    animation: lightboxIn 0.5s;
+    animation: boxIn 0.5s;
     display: none;
     padding-top: 20px;
 }
@@ -388,7 +389,7 @@ h1{
     max-height: 90vh;
     max-width: 90vh;
     height: auto;
-    animation: lightboxIn 0.3s;
+    animation: boxIn 0.3s;
 }
 
 .lightbox_container{
@@ -400,7 +401,7 @@ h1{
     margin: 0 auto;
 }
 
-@keyframes lightboxIn{
+@keyframes boxIn{
     from{opacity: 0;}
     to{opacity: 1;}
 }
@@ -435,7 +436,7 @@ h1{
         left: 20%;
     }
 
-    .compteur{
+    #compteur{
         display: none;
     }
 

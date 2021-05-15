@@ -28,25 +28,25 @@ function showPhotographers(listPhotographers){
 		for(const photographersTags of photographers.tags){
 			tagsBox += `<button alt="Tag ${photographersTags}" class="btn_select" data-tag="${photographersTags}">#${photographersTags}</button>`
 		}
-		photographersElement.innerHTML += `<article alt="photographers profile" class="card">
-					<a href="photographer.html?id=${photographers.id}" alt="photographers page">
-						<div class="photo_graphers">
-							<img src="photos/sample/id_photos/${photographers.portrait}" alt="photographers_photo" class="format_photos">
+		photographersElement.innerHTML += `<article aria-label="profil du photographe" class="card">
+					<a href="photographer.html?id=${photographers.id}" aria-label="page du photographe">
+						<div class="photo_graphers" aria-label="photo du photographe">
+							<img src="photos/sample/id_photos/${photographers.portrait}" alt="photo du photographe" class="format_photos">
 						</div>
-						<p class="photographers_name" alt="photographers name">
+						<p class="photographers_name" aria-label="nom du photographe">
 							${photographers.name}
 						</p>
 					</a>
-					<p alt="photographer city" class="city">
+					<p aria-label="ville du photographe" class="city">
 						${photographers.city}
 					</p>
-					<p alt="slogan" class="slogan">
+					<p aria-label="slogan" class="slogan">
 						${photographers.tagline}
 					</p>
-					<p alt="prices" class="prices">
+					<p aria-label="prix par jour" class="prices">
 						${photographers.price}€/jour
 					</p>
-					<nav aria-label="categories" id="tagsbox">
+					<nav aria-label="tags du photographe" id="tagsbox">
 					${tagsBox}
 					</nav>
 				</article>`;
@@ -55,6 +55,6 @@ function showPhotographers(listPhotographers){
 
 /*Affichage Ancre contenu*/
 document.addEventListener('scroll', ()=>{
-	const urlZone = document.querySelector('.url-ancre');
-	urlZone.innerHTML = `<a href=#ancre class="lien-ancre-tags">Passer au contenu</a>`
+	const urlZone = document.querySelector('.block-url-ancre');
+	urlZone.innerHTML = `<a href=#navigation class="lien-ancre-tags" id="lientags" aria-label="aller aux filtres des photographes par tags">Passer au contenu</a>`;
 })
