@@ -130,6 +130,13 @@ fetch('FishEyeDataFR.json')
             allPage.style.opacity = "1";
             });
         }
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+              case "Escape":
+                modalZone.style.display = "none";
+                allPage.style.opacity = "1";
+                break;
+            }})
 
 
         /*Tri des medias*/
