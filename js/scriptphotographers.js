@@ -48,6 +48,7 @@ fetch('FishEyeDataFR.json')
             }) 
         });
 
+
         /*Incrementation d'un like*/
         document.querySelectorAll('.heartmedia').forEach(heart =>{
             heart.addEventListener('click', addLike);
@@ -114,6 +115,7 @@ fetch('FishEyeDataFR.json')
                     class="send_button"
                     value="Envoyer"
                     aria-labelledby="modal"
+                    class="submit"
               />
             </form>
         </div>`
@@ -125,17 +127,21 @@ fetch('FishEyeDataFR.json')
         /*Fermeture de la Modal*/
         const closeButton = document.querySelector('#close');
         const modal = document.querySelector('.modal');
+
         closeButton.addEventListener('click', function close(){
             modal.style.display = "none";
             allPage.style.opacity = "1";
             });
         }
         document.addEventListener('keydown', (e) => {
+            const submit = document.querySelector('#modal')
             switch (e.key) {
               case "Escape":
                 modalZone.style.display = "none";
                 allPage.style.opacity = "1";
                 break;
+                case "Enter":
+                submit.submit();
             }})
 
 
@@ -199,7 +205,7 @@ function showMedia(photographer, photoResult){
                 <i class="fas fa-heart heartmedia" aria-label="cliquer pour liker la photo"></i>
             </span>
         </aside>
-    </article>`;
+    </article>`;    
         }
 }
 
