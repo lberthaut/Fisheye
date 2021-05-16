@@ -170,6 +170,11 @@ fetch('FishEyeDataFR.json')
             media.addEventListener('click', function(){
                 lightbox.init(this.dataset.id);
             }) 
+            media.addEventListener('keydown', function(e){
+                if(e.key == "Enter"){
+                lightbox.init(this.dataset.id);
+                }
+            })
         });
         })
     })
@@ -184,7 +189,7 @@ function showMedia(photographer, photoResult){
         var media = "";
         var title = "";
         if(photosData.image != undefined){
-            media = `<img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="${photosData.alt}" class="open-lightbox" data-id="${photosData.id}">`;
+            media = `<img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="${photosData.alt}" tabindex="1" class="open-lightbox" data-id="${photosData.id}">`;
             title = photosData.image;
         }
         if(photosData.video != undefined){
