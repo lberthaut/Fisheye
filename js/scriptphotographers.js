@@ -175,7 +175,7 @@ function showMedia(photographer, photoResult){
             title = photosData.image;
         }
         if(photosData.video != undefined){
-            media = `<video preload="metadata" class="open-lightbox vignette-video" data-id="${photosData.id}" title="${photosData.alt}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4"></video>`;
+            media = `<video preload="metadata" class="open-lightbox vignette-video" data-id="${photosData.id}" title="${photosData.alt}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4" alt="${photosData.alt}"></video>`;
             title = photosData.video;
         }
         mediaElement.innerHTML += `<article alt="photos" class="media_box">
