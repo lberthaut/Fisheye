@@ -31,7 +31,7 @@ function showPhotographers(listPhotographers){
 		photographersElement.innerHTML += `<article aria-label="profil du photographe" class="card">
 					<a href="photographer.html?id=${photographers.id}" aria-label="page du photographe">
 						<div class="photo_graphers" aria-label="photo du photographe">
-							<img src="photos/sample/id_photos/${photographers.portrait}" alt="photo du photographe" class="format_photos">
+							<img src="photos/sample/id_photos/${photographers.portrait}" alt="photo du photographe ${photographers.name}" class="format_photos">
 						</div>
 						<p class="photographers_name" aria-label="nom du photographe">
 							${photographers.name}

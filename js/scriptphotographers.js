@@ -31,7 +31,7 @@ fetch('FishEyeDataFR.json')
             <input type="button" value="Contactez-moi" alt="Contacter le photographe" class="btn_contact">
             </section>
             <div class="photo_graphers" aria-label="photo de profil du photographe">
-                <img src="photos/sample/id_photos/${photographer.portrait}" alt="photo du photographe" class="format_photos">
+                <img src="photos/sample/id_photos/${photographer.portrait}" alt="photo du photographe ${photographer.name}" class="format_photos">
             </div>`
         
         /*Affichage des medias*/
@@ -65,7 +65,7 @@ fetch('FishEyeDataFR.json')
         function openModal(){
             modalZone.innerHTML = `<div aria-label="modal de contact" class="modal">
             <p aria-label="contact">Contactez moi</p>
-            <i class="fa fa-times" id="close" aria-label="fermer la modal"></i>
+            <i class="fa fa-times" id="close" aria-label="fermer la modal" alt="fermer la modal"></i>
             <p aria-label="nom du photographe">${photographer.name}</p>
             <form
                   name="contact"
@@ -149,6 +149,8 @@ fetch('FishEyeDataFR.json')
                 break;
             }
             showMedia (photographer, filterResult);
+
+
             /*Initialisation de la Lightbox lors d'un tri*/
             var lightbox = new Lightbox(photoResult, document.querySelector('#lightbox'), photographer.name);
             document.querySelectorAll('.open-lightbox').forEach(media => {
@@ -182,12 +184,12 @@ function showMedia(photographer, photoResult){
         </div>
         <aside alt="informations de la photo" class="medias_infos">
             <span class="titlebox" aria-label="titre de la photo">
-                <p aria-label="titre de la photo">${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
+                <p aria-label="${title}">${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
             </span>
             <p aria-label="prix de la photo">${photosData.price}€</p>
             <span class="likesbox" aria-label="likes de la photo">
-                <p class="liked">${photosData.likes}</p>
-                <i class="fas fa-heart heartmedia"></i>
+                <p class="liked" aria-label="${photosData.likes} likes">${photosData.likes}</p>
+                <i class="fas fa-heart heartmedia" aria-label="cliquer pour liker la photo"></i>
             </span>
         </aside>
     </article>`;
