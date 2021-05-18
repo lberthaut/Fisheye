@@ -169,11 +169,6 @@ fetch('FishEyeDataFR.json')
             document.querySelectorAll('.open-lightbox').forEach(media => {
             media.addEventListener('click', function(){
                 lightbox.init(this.dataset.id);
-            }) 
-            media.addEventListener('keydown', function(e){
-                if(e.key == "Enter"){
-                lightbox.init(this.dataset.id);
-                }
             })
         });
         })
@@ -186,31 +181,8 @@ function showMedia(photographer, photoResult){
     mediaElement.innerHTML = "";
     for(const photosData of photoResult){
         const photographerName = photographer.name.split(' ');
-        var media = "";
-        var title = "";
-        if(photosData.image != undefined){
-            media = `<img src="photos/sample/${photographerName[0]}/${photosData.image}" alt="${photosData.alt}" tabindex="1" class="open-lightbox" data-id="${photosData.id}">`;
-            title = photosData.image;
-        }
-        if(photosData.video != undefined){
-            media = `<video preload="metadata" class="open-lightbox vignette-video" data-id="${photosData.id}" title="${photosData.alt}"><source src="photos/sample/${photographerName[0]}/${photosData.video}" type="video/mp4" alt="${photosData.alt}"></video>`;
-            title = photosData.video;
-        }
-        mediaElement.innerHTML += `<article alt="photos" class="media_box">
-        <div class="media_format" arial-label="photo ${title}">
-            ${media}
-        </div>
-        <aside alt="informations de la photo" class="medias_infos">
-            <span class="titlebox" aria-label="titre de la photo">
-                <p aria-label="${title}">${title.replace('.jpg',"").replace(/_/g," ").replace('.mp4',"")}</p>
-            </span>
-            <p aria-label="prix de la photo">${photosData.price}€</p>
-            <span class="likesbox" aria-label="likes de la photo">
-                <p class="liked" aria-label="${photosData.likes} likes">${photosData.likes}</p>
-                <i class="fas fa-heart heartmedia" aria-label="cliquer pour liker la photo"></i>
-            </span>
-        </aside>
-    </article>`;    
+        let media = new MediaFactory(photosData, photographerName[0]);
+        mediaElement.innerHTML += media.show();
         }
 }
 
