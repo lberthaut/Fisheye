@@ -20,7 +20,7 @@ class MediaFactory{
             <p aria-label="prix de la photo" class="price">${this.price}€</p>
             <span class="likesbox" aria-label="likes de la photo">
                 <p class="liked" aria-label="${this.likes} likes">${this.likes}</p>
-                <i class="fas fa-heart heartmedia" aria-label="cliquer pour liker la photo"></i>
+                <i class="fas fa-heart heartmedia" tabindex="1" aria-label="cliquer pour liker la photo"></i>
             </span>
         </aside>
         </article>`;

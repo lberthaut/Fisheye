@@ -2,9 +2,9 @@ class Lightbox{
     constructor (listMedia, element, photographerName){
         this.listMedia = listMedia;
         this.element = element;
-        this.element.innerHTML = `<i class="fas fa-times lightbox_close" aria-label="fermer la lightbox""></i>
-        <i class="fas fa-arrow-right lightbox_next" aria-label="prochaine photo"></i>
-        <i class="fas fa-arrow-left lightbox_prev" aria-label="précédente photo"></i>
+        this.element.innerHTML = `<i role="button" class="fas fa-times lightbox_close" aria-label="fermer la lightbox""></i>
+        <i role="button" class="fas fa-arrow-right lightbox_next" aria-label="prochaine photo"></i>
+        <i role="button" class="fas fa-arrow-left lightbox_prev" aria-label="précédente photo"></i>
         <div class="lightbox_container">
         </div>`;
         this.name = (photographerName.split(' '))[0];

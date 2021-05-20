@@ -116,11 +116,11 @@ fetch('FishEyeDataFR.json')
                 >
                 </textarea>
                 <input
+                    role="button"
                     type="submit"
-                    class="send_button"
+                    class="send_button submit"
                     value="Envoyer"
                     aria-labelledby="modal"
-                    class="submit"
               />
             </form>
         </div>`
@@ -168,15 +168,16 @@ fetch('FishEyeDataFR.json')
             /*Initialisation de la Lightbox lors d'un tri*/
             var lightbox = new Lightbox(photoResult, document.querySelector('#lightbox'), photographer.name);
             document.querySelectorAll('.open-lightbox').forEach(media => {
-            media.addEventListener('click', function(){
-                lightbox.init(this.dataset.id);
+                media.addEventListener('click', function(){
+                    lightbox.init(this.dataset.id);
+                })
             })
-        })
 
             /*Incrementation d'un like lors d'un tri*/
             document.querySelectorAll('.heartmedia').forEach(heart =>{
                 heart.addEventListener('click', addLike);
             })
+            
         })
     })
 
@@ -188,6 +189,7 @@ function showMedia(photographer, photoResult){
         const photographerName = photographer.name.split(' ');
         let media = new MediaFactory(photosData, photographerName[0]);
         mediaElement.innerHTML += media.show();
+        photoResult.sort((a,b)=> b.likes - a.likes);
     }
 }
 
