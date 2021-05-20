@@ -36,30 +36,35 @@ fetch('FishEyeDataFR.json')
         
         /*Affichage des medias*/
 		showMedia(photographer, photoResult);
+
         /*Affichage du nombres total de likes*/
         showTotalLikes(photoResult);
+
         /*Affichage du prix/jour*/
         showTotalprice(photographer);
+        
         /*Affichage Lightbox*/
         var lightbox = new Lightbox(photoResult, document.querySelector('#lightbox'), photographer.name);
         document.querySelectorAll('.open-lightbox').forEach(media => {
             media.addEventListener('click', function(){
                 lightbox.init(this.dataset.id);
             }) 
+            media.addEventListener('keydown', function(e){
+                if(e.key == 'Enter'){
+                    lightbox.init(this.dataset.id);
+                }
+            })
         });
-
 
         /*Incrementation d'un like*/
         document.querySelectorAll('.heartmedia').forEach(heart =>{
             heart.addEventListener('click', addLike);
         })
 
-
         /*Ouverture de la Modal de contact*/
         const contactButton = document.querySelector('.btn_contact');
         const modalZone = document.querySelector('#modal_zone');
         const allPage = document.querySelector('#bloc_page');
-
         contactButton.addEventListener('click', openModal);
 
         /*Fonction d'ouverture et de fermeture de la Modal*/
@@ -123,11 +128,9 @@ fetch('FishEyeDataFR.json')
         document.getElementById('lastname').focus();
         allPage.style.opacity = "0.5";
         
-        
         /*Fermeture de la Modal*/
         const closeButton = document.querySelector('#close');
         const modal = document.querySelector('.modal');
-
         closeButton.addEventListener('click', function close(){
             modal.style.display = "none";
             allPage.style.opacity = "1";
@@ -143,7 +146,6 @@ fetch('FishEyeDataFR.json')
                 case "Enter":
                 submit.submit();
             }})
-
 
         /*Tri des medias*/
         document.querySelector('#selection').addEventListener('change', function(){
@@ -178,7 +180,6 @@ fetch('FishEyeDataFR.json')
         })
     })
 
-    
 /*Fonction d'affichage des medias*/
 function showMedia(photographer, photoResult){
     var mediaElement = document.querySelector('#medias_sections');
@@ -187,11 +188,8 @@ function showMedia(photographer, photoResult){
         const photographerName = photographer.name.split(' ');
         let media = new MediaFactory(photosData, photographerName[0]);
         mediaElement.innerHTML += media.show();
-        }
+    }
 }
-
-
-
 
 /*Fonction d'incrémentation du like au click*/
 function addLike(){
