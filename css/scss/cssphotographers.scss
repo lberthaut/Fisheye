@@ -421,7 +421,7 @@ h1{
     }
 
     .logo{
-        height: 38px;
+        height: 42px;
         width: 150px;
     }
 
@@ -516,18 +516,23 @@ h1{
         display: none;
     }
 
+    .titlebox p, .likesbox p, .heartmedia{
+        font-size: 14px;
+    }
+
     section{
         width: 330px;
     }
 
     .media_box{
         width: 330px;
-        height: 250px;
+        height: 227px;
         margin: 0px;
     }
 
     .modal{
-        margin: 0 auto;
+        margin: 5%;
+        position: absolute;
     }
 
     .lightbox_container img{
