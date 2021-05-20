@@ -17,7 +17,7 @@ class MediaFactory{
             <span class="titlebox" aria-label="titre de la photo">
                 <p aria-label="${this.fileName}">${this.title}</p>
             </span>
-            <p aria-label="prix de la photo">${this.price}€</p>
+            <p aria-label="prix de la photo" class="price">${this.price}€</p>
             <span class="likesbox" aria-label="likes de la photo">
                 <p class="liked" aria-label="${this.likes} likes">${this.likes}</p>
                 <i class="fas fa-heart heartmedia" aria-label="cliquer pour liker la photo"></i>

@@ -232,7 +232,7 @@ h1{
 }
 
 #medias_sections{
-    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -412,13 +412,22 @@ h1{
 /*Query Smartphone*/
 @media screen and (max-width: 840px) {
 
+    body{
+        margin: 0 auto;
+    }
+
     #bloc_page{
         margin: 0 auto;
     }
 
+    .logo{
+        height: 38px;
+        width: 150px;
+    }
+
     .btn_contact{
         position: absolute;
-        bottom: 1vh;
+        bottom: 4vh;
         position: fixed;
         z-index: 2;
         width: 180px;
@@ -428,13 +437,32 @@ h1{
         left: 20%;
     }
 
+    h1{
+        font-size: 36px;
+        height: 40px;
+        font-weight: normal;
+    }
+
+    .infos{
+        height: 130px;
+    }
+
+    .infos p{
+        font-size: 13px;
+    }
+
+    .slogan{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
     #compteur{
         display: none;
     }
 
     #profile{
         padding: 0;
-        height: 200px;
+        height: 150px;
         width: 330px;
     }
 
@@ -443,13 +471,24 @@ h1{
     }
 
     .photo_graphers{
-        height: 8em;
-        width: 8em;
+        height: 5.5em;
+        width: 5.5em;
+        position: absolute;
+        left: 68%;
     }
 
     .tagsbox{
         flex-wrap: wrap;
-        width: 220px;
+        width: 260px;
+        margin-top: 4px;
+    }
+
+    .btn_tags{
+        border: hidden;
+        font-size: 13px;
+        font-weight: bold;
+        margin-right: 2px;
+        margin-left: 0;
     }
 
     #tagsbox{
@@ -457,7 +496,7 @@ h1{
     }
 
     .format_photos{
-        width: 15em;
+        width: 9em;
     }
 
     #sortby{
@@ -473,10 +512,18 @@ h1{
         width: 330px;
     }
 
+    .price{
+        display: none;
+    }
+
+    section{
+        width: 330px;
+    }
+
     .media_box{
         width: 330px;
         height: 250px;
-        margin-right : 10px;
+        margin: 0px;
     }
 
     .modal{

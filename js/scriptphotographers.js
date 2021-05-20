@@ -64,7 +64,7 @@ fetch('FishEyeDataFR.json')
 
         /*Fonction d'ouverture et de fermeture de la Modal*/
         function openModal(){
-            modalZone.innerHTML = `<div aria-label="modal de contact" class="modal">
+            modalZone.innerHTML = `<div id="modal de contact" class="modal">
             <p aria-label="contact">Contactez moi</p>
             <i class="fa fa-times" id="close" aria-label="fermer la modal" alt="fermer la modal"></i>
             <p aria-label="nom du photographe">${photographer.name}</p>

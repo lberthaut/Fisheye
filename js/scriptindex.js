@@ -33,9 +33,9 @@ function showPhotographers(listPhotographers){
 						<div class="photo_graphers" aria-label="photo du photographe">
 							<img src="photos/sample/id_photos/${photographers.portrait}" alt="photo du photographe ${photographers.name}" class="format_photos">
 						</div>
-						<p class="photographers_name" aria-label="nom du photographe">
+						<h2 class="photographers_name" aria-label="nom du photographe">
 							${photographers.name}
-						</p>
+						</h2>
 					</a>
 					<p aria-label="ville du photographe" class="city">
 						${photographers.city}
@@ -56,5 +56,5 @@ function showPhotographers(listPhotographers){
 /*Affichage Ancre contenu*/
 document.addEventListener('scroll', ()=>{
 	const urlZone = document.querySelector('.block-url-ancre');
-	urlZone.innerHTML = `<a href=#navigation class="lien-ancre-tags" id="lientags" aria-label="aller aux filtres des photographes par tags">Passer au contenu</a>`;
+	urlZone.innerHTML = `<a href=#navigation class="lien-ancre-tags" aria-labelledby="lientags" aria-label="aller aux filtres des photographes par tags">Passer au contenu</a>`;
 })
