@@ -18,7 +18,7 @@ fetch('FishEyeDataFR.json')
                 ${photographer.name}
             </h1>
             <p aria-label="ville du photographe" class="city">
-                ${photographer.city}
+                ${photographer.city}, ${photographer.country}
             </p>
             <p aria-label="slogan" class="slogan">
                 ${photographer.tagline}

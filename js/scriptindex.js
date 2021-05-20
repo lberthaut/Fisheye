@@ -38,7 +38,7 @@ function showPhotographers(listPhotographers){
 						</h2>
 					</a>
 					<p aria-label="ville du photographe" class="city">
-						${photographers.city}
+						${photographers.city}, ${photographers.country}
 					</p>
 					<p aria-label="slogan" class="slogan">
 						${photographers.tagline}
