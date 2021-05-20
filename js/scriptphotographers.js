@@ -163,14 +163,18 @@ fetch('FishEyeDataFR.json')
             }
             showMedia (photographer, filterResult);
 
-
             /*Initialisation de la Lightbox lors d'un tri*/
             var lightbox = new Lightbox(photoResult, document.querySelector('#lightbox'), photographer.name);
             document.querySelectorAll('.open-lightbox').forEach(media => {
             media.addEventListener('click', function(){
                 lightbox.init(this.dataset.id);
             })
-        });
+        })
+
+            /*Incrementation d'un like lors d'un tri*/
+            document.querySelectorAll('.heartmedia').forEach(heart =>{
+                heart.addEventListener('click', addLike);
+            })
         })
     })
 
@@ -185,6 +189,8 @@ function showMedia(photographer, photoResult){
         mediaElement.innerHTML += media.show();
         }
 }
+
+
 
 
 /*Fonction d'incrémentation du like au click*/
