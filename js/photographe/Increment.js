@@ -1,5 +1,5 @@
 /*Fonction d'incrémentation du like au click*/
-function addLike(){
+function addLike() {
     let likedElement = this.closest(".likesbox").querySelector('.liked');
     let liked = parseInt(likedElement.innerHTML);
     liked++;

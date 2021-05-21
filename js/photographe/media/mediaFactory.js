@@ -1,14 +1,13 @@
-class MediaFactory{
-    constructor(media, photographerName){
+class MediaFactory {
+    constructor(media, photographerName) {
         media.photographerName = photographerName;
-        if(media.image != undefined){
+        if (media.image != undefined) {
             Object.assign(this, new Image(media));
-        }
-        else if(media.video != undefined){
+        } else if (media.video != undefined) {
             Object.assign(this, new Video(media));
         }
     }
-    show(){
+    show() {
         return `<article alt="photos" class="media_box">
         <div class="media_format" arial-label="photo ${this.fileName}">
             ${this.media}

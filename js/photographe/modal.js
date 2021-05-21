@@ -1,7 +1,8 @@
 /*Fonction d'ouverture et de fermeture de la Modal*/
 const modalZone = document.querySelector('#modal_zone');
 const allPage = document.querySelector('#bloc_page');
-function openModal(photographer){
+
+function openModal(photographer) {
     modalZone.innerHTML = `<div id="modal de contact" class="modal">
     <p aria-label="contact">Contactez moi</p>
     <i class="fa fa-times" id="close" aria-label="fermer la modal" alt="fermer la modal"></i>
@@ -58,24 +59,25 @@ function openModal(photographer){
     </form>
 </div>`
 
-document.getElementById('lastname').focus();
-allPage.style.opacity = "0.5";
+    document.getElementById('lastname').focus();
+    allPage.style.opacity = "0.5";
 
-/*Fermeture de la Modal*/
-const closeButton = document.querySelector('#close');
-const modal = document.querySelector('.modal');
-closeButton.addEventListener('click', function close(){
-    modal.style.display = "none";
-    allPage.style.opacity = "1";
+    /*Fermeture de la Modal*/
+    const closeButton = document.querySelector('#close');
+    const modal = document.querySelector('.modal');
+    closeButton.addEventListener('click', function close() {
+        modal.style.display = "none";
+        allPage.style.opacity = "1";
     });
 }
 document.addEventListener('keydown', (e) => {
     const submit = document.querySelector('#modal')
     switch (e.key) {
-      case "Escape":
-        modalZone.style.display = "none";
-        allPage.style.opacity = "1";
-        break;
+        case "Escape":
+            modalZone.style.display = "none";
+            allPage.style.opacity = "1";
+            break;
         case "Enter":
-        submit.submit();
-    }})
+            submit.submit();
+    }
+})

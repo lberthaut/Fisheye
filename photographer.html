@@ -1,39 +1,41 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8">
-  <title>Page Photographe</title>
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/cssphotographers.css">
-  <script src="https://kit.fontawesome.com/959f234b81.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>Page Photographe</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/cssphotographers.css">
+    <script src="https://kit.fontawesome.com/959f234b81.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div id="modal_zone" aria-label="Modal de contact">
     </div>
     <div id="bloc_page" alt="contenu de la page">
         <header class="head">
-                <a href="index.html" tabindex="0" aria-label="Lien pour l'accueil" title="Fisheye">
-                    <img src="photos/logo.png" alt="Logo Fisheye lien pour accueil" class="logo">
-                </a>
+            <a href="index.html" tabindex="0" aria-label="Lien pour l'accueil" title="Fisheye">
+                <img src="photos/logo.png" alt="Logo Fisheye lien pour accueil" class="logo">
+            </a>
         </header>
         <main id="profile">
         </main>
         <div id="compteur" alt="compteur de likes total et prix par jour du photographe">
-            <span class="likes" aria-labelledby="compteur"></span> 
+            <span class="likes" aria-labelledby="compteur"></span>
             <i class="fas fa-heart" aria-labelledby="compteur"></i>
             <span class="price" aria-labelledby="compteur"></span>
             <span aria-labelledby="compteur">€ / jour</span>
         </div>
         <section aria-label="contenu principal du photographe">
             <nav aria-label="sort by" id="sortby">
-            <label for="selection">Trier par</label>
-            <div class="select-style">
-                <select name="sort by" id="selection">
-                    <option value="popularite" alt="tri par popularité">Popularité</option>
-                    <option value="date" alt="tri par date">Date</option>
-                    <option value="titre" alt="tri par titre">Titre</option>
-                </select>
-            </div>
+                <label for="selection">Trier par</label>
+                <div class="select-style">
+                    <select name="sort by" id="selection">
+                        <option value="popularite" alt="tri par popularité">Popularité</option>
+                        <option value="date" alt="tri par date">Date</option>
+                        <option value="titre" alt="tri par titre">Titre</option>
+                    </select>
+                </div>
             </nav>
             <section aria-label="photos du photographe" id="medias_sections">
             </section>
@@ -46,10 +48,11 @@
     <script src="js/photographe/increment.js"></script>
     <script src="js/photographe/compteur.js"></script>
     <script src="js/photographe/modal.js"></script>
-    <script src="js/photographe/lightbox.js"></script> 
+    <script src="js/photographe/lightbox.js"></script>
     <script src="js/photographe/media/mediaFactory.js"></script>
     <script src="js/photographe/media/image.js"></script>
     <script src="js/photographe/media/video.js"></script>
     <script src="js/photographe/scriptphotographers.js"></script>
 </body>
+
 </html>
