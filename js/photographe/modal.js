@@ -80,5 +80,7 @@ document.addEventListener('keydown', (e) => {
         case "Enter":
             submit.submit();
             break;
+        default:
+            break;
     }
 })
