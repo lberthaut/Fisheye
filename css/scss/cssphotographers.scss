@@ -440,6 +440,7 @@ h1{
     h1{
         font-size: 36px;
         height: 40px;
+        width: 320px;
         font-weight: normal;
     }
 
@@ -501,6 +502,10 @@ h1{
 
     #sortby{
         display: none;
+    }
+
+    #medias_sections{
+        max-width: 700px;
     }
 
     .media_format{
