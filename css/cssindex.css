@@ -63,7 +63,7 @@ h1 {
 }
 
 /* line 62, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssindex.scss */
-section {
+nav {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -207,7 +207,7 @@ footer {
     font-weight: bold;
   }
   /* line 195, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssindex.scss */
-  section {
+  nav {
     width: 100%;
     display: flex;
     flex-direction: column;
