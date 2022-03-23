@@ -1,10 +1,10 @@
 /*Fonction d'affichage des photographes*/
-function showPhotographers(listPhotographers){
+function showPhotographers(listPhotographers) {
 	var photographersElement = document.getElementById('photographers');
-	photographersElement.innerHTML ='';
-	for(const photographers of listPhotographers){
+	photographersElement.innerHTML = '';
+	for (const photographers of listPhotographers) {
 		var tagsBox = "";
-		for(const photographersTags of photographers.tags){
+		for (const photographersTags of photographers.tags) {
 			tagsBox += `<button alt="Tag ${photographersTags}" class="btn_select" data-tag="${photographersTags}">#${photographersTags}</button>`
 		}
 		photographersElement.innerHTML += `<article aria-label="profil du photographe" class="card">

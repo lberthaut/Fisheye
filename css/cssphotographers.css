@@ -11,7 +11,7 @@ a {
 /* line 15, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
 body {
   position: relative;
-  margin-left: 5%;
+  margin-left: 10%;
   margin-right: 5%;
   display: flex;
   flex-direction: column;
@@ -462,7 +462,7 @@ h1 {
 }
 
 /*Query Smartphone*/
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 1025px) {
   /* line 418, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
   body {
     margin: 0 auto;
@@ -486,7 +486,7 @@ h1 {
     height: 30px;
     padding: 0;
     font-size: 22px;
-    left: 20%;
+    left: 30vw;
   }
   /* line 443, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
   h1 {
@@ -527,7 +527,7 @@ h1 {
     height: 5.5em;
     width: 5.5em;
     position: absolute;
-    left: 68%;
+    left: 60%;
   }
   /* line 484, ../P6/Fisheye/lberthaut-BERTHAUT_6_25032021/css/scss/cssphotographers.scss */
   .tagsbox {
